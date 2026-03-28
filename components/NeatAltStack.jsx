@@ -231,7 +231,7 @@ const StackPair = ({
       {/* Preview Card */}
       <div
         data-theme="default"
-        className="stack-cards__item bg radius-lg shadow-md js-stack-cards__item"
+        className="stack-cards__item bg radius-lg shadow-md js-stack-cards__item preview-card"
         ref={(el) => (itemsRef.current[0] = el)}
         style={{
           top: `${stickyStartPosition}px`,
@@ -239,19 +239,11 @@ const StackPair = ({
         }}
       >
         <div className={`grid ${pairIndex % 2 === 1 ? "reverse-grid" : ""}`}>
-          <div className="col-6 flex items-center">
-            <div
-              className="text-component padding-md"
-              style={{
-                position: "relative",
-                overflow: "visible",
-                padding: "30px",
-              }}
-            >
+          <div className="col-6 flex items-center preview-card__content-col">
+            <div className="text-component padding-md preview-card__text">
               <span
-                className={`live-badge ${pairIndex % 2 === 1 ? "right" : "left"}`}
+                className={`live-badge preview-card__badge ${pairIndex % 2 === 1 ? "right" : "left"}`}
                 style={{
-                  top: isExtraLg ? "-3.3vw" : "0",
                   "--badge-color": previewCard.statusColor,
                 }}
               >
@@ -262,25 +254,6 @@ const StackPair = ({
               <h4 style={{ color: "#7B776E" }}>{previewCard.subtitle}</h4>
               <p>{previewCard.description}</p>
               <p>{previewCard.details}</p>
-
-              {previewCard.githubLink && (
-                <div
-                  style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    gap: "1rem",
-                    marginTop: "20px",
-                  }}
-                >
-                  <a
-                    href={previewCard.githubLink}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    GitHub
-                  </a>
-                </div>
-              )}
             </div>
           </div>
 
@@ -304,8 +277,7 @@ const StackPair = ({
             </a>
           </div>
         </div>
-      </div>
-
+      </div>{" "}
       {/* Details Card */}
       <div
         data-theme="secondary"
