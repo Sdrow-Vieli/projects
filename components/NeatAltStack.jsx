@@ -242,7 +242,7 @@ const StackPair = ({
           <div className="col-6 flex items-center preview-card__content-col">
             <div className="text-component padding-md preview-card__text">
               <span
-                className={`live-badge preview-card__badge ${pairIndex % 2 === 1 ? "right" : "left"}`}
+                className={"live-badge preview-card__badge left"}
                 style={{
                   "--badge-color": previewCard.statusColor,
                 }}
