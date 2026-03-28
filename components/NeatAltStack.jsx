@@ -207,6 +207,17 @@ const StackPair = ({
     hidden: { opacity: 0, scale: 0.9, y: 20 },
     visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.4 } },
   };
+  const statsStagger = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.08 },
+    },
+  };
+  const techItemVar = {
+    hidden: { opacity: 0, scale: 0.9, y: 12 },
+    visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.35 } },
+  };
 
   const mockupVariants = [
     {
@@ -366,6 +377,65 @@ const StackPair = ({
                       {stat.label}
                     </div>
                   </motion.div>
+                ))}
+              </motion.div>
+              <motion.div
+                style={{
+                  display: "flex",
+                  justifyContent: "center",
+                  flexWrap: "wrap",
+                  gap: isMobile ? "20px" : "5em",
+                  marginTop: isMobile ? "25px" : "50px",
+                }}
+                variants={statsStagger}
+                initial="hidden"
+                animate={isVisible(0) ? "visible" : "hidden"}
+              >
+                {(
+                  technologyIcons.find((group) => group[detailsCard.iconKey])?.[
+                    detailsCard.iconKey
+                  ] || []
+                ).map((tech) => (
+                  <motion.a
+                    key={tech.id}
+                    href={tech.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    variants={techItemVar}
+                    style={{
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "8px",
+                      textDecoration: "none",
+                      color: tech.color,
+                      fontSize: isMobile ? "1rem" : "1.1rem",
+                      fontWeight: "500",
+                      transition: "all 0.3s ease",
+                      backgroundColor: "transparent",
+                    }}
+                    onMouseEnter={(e) => {
+                      const link = e.currentTarget;
+                      link.style.transform = "scale(1.15)";
+                      link.style.color = tech.hoverColor;
+                    }}
+                    onMouseLeave={(e) => {
+                      const link = e.currentTarget;
+                      link.style.transform = "scale(1)";
+                      link.style.color = tech.color;
+                    }}
+                  >
+                    {tech.path && (
+                      <svg
+                        width={isMobile ? "2em" : "3em"}
+                        height={isMobile ? "2em" : "3em"}
+                        viewBox="0 0 24 24"
+                        fill="currentColor"
+                      >
+                        <path d={tech.path} />
+                      </svg>
+                    )}
+                    {tech.name && <span>{tech.name}</span>}
+                  </motion.a>
                 ))}
               </motion.div>
             </motion.div>
