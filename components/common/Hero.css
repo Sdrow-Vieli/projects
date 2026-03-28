@@ -33,7 +33,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: 0;
-  height: 3px;
+  height: 3.5px;
   background: #ff0000;
   border-radius: 3px;
   animation: materializeLine 0.8s ease 0.4s forwards;
@@ -139,6 +139,9 @@
   border-color: #ffd700;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+}
+.social-links {
+  animation: fadeInUp 0.8s ease;
 }
 
 @keyframes fadeInUp {

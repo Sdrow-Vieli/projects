@@ -58,7 +58,7 @@ export default function Hero() {
                   color: "#4D9DC9",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.color = "#0744C9";
+                  e.currentTarget.style.color = "#0077B5";
 
                   e.currentTarget.style.transform = "translateY(-3px)";
                 }}
@@ -93,7 +93,7 @@ export default function Hero() {
                   transition: "all 0.3s ease",
                 }}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.color = "#17191E";
+                  e.currentTarget.style.color = "#848282";
                   e.currentTarget.style.transform = "translateY(-3px)";
                 }}
                 onMouseLeave={(e) => {
@@ -112,8 +112,6 @@ export default function Hero() {
                 </svg>
               </a>
             </div>
-
-            <DownArrow color="red" space="0" />
           </div>{" "}
         </div>
       </div>

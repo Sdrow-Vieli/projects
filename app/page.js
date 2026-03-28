@@ -7,11 +7,41 @@ import cardsData from "@/data/projects.json";
 export default function Home() {
   return (
     <FullWidthLayout showHero={true}>
-      <NeatAltStack
-        cards={cardsData.webApps}
-        multipleMockupWidth={100}
-        stickyStartPosition={100}
-      />
+      {" "}
+      <div>
+        <h1
+          className="lemon-font"
+          style={{
+            color: "#444444",
+            fontSize: "1.6em",
+            margin: "-1.5em 2em 2em 2em",
+          }}
+        >
+          Web Applications
+        </h1>{" "}
+        <NeatAltStack
+          cards={cardsData.webApps}
+          multipleMockupWidth={100}
+          stickyStartPosition={100}
+        />
+      </div>
+      <div>
+        <h1
+          className="lemon-font"
+          style={{
+            color: "#444444",
+            fontSize: "1.6em",
+            margin: "-1.5em 2em 2em 2em",
+          }}
+        >
+          Web Games
+        </h1>{" "}
+        <NeatAltStack
+          cards={cardsData.webGames}
+          multipleMockupWidth={100}
+          stickyStartPosition={100}
+        />
+      </div>
     </FullWidthLayout>
   );
 }

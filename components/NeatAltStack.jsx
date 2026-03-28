@@ -328,8 +328,7 @@ const StackPair = ({
         className="stack-cards__item-large bg radius-lg shadow-lg js-stack-cards__item"
         ref={(el) => (itemsRef.current[1] = el)}
         style={{
-          top: `${stickyStartPosition}px`,
-          boxShadow: "0 -5px 10px -4px rgba(0,0,0,0.3)",
+          top: `${stickyStartPosition}px`, 
           paddingBottom: ".1em",
           "--stack-cards-gap": "-2rem",
         }}
