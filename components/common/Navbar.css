@@ -123,3 +123,16 @@
     padding: 12px;
   }
 }
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.brand-text {
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1;
+}

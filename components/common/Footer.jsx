@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Logo from "./Logo";
 import "./Footer.css";
 
 export default function Footer() {
@@ -9,7 +10,10 @@ export default function Footer() {
       <div className="container">
         <div className="footer-grid">
           <div className="footer-section">
-            <h4>About Lindocode Digital</h4>
+            <div className="footer-brand">
+              <h4>Lindocode Digital</h4>
+            </div>
+
             <p>
               Creating beautiful, responsive web components with Next.js and
               modern CSS.
@@ -52,8 +56,25 @@ export default function Footer() {
             <p>GitHub: github.com/Lindocode</p>
           </div>
         </div>
+
         <div className="footer-bottom">
-          <p>&copy; 2026 NextStack. All rights reserved.</p>
+          <Logo
+            size="compact"
+            scale={0.4}
+            postWidth={0.9}
+            dotWidth={1.5}
+            bulbWidth={0.7}
+            headWidth={2.3}
+            headPos={-1.7}
+            rayPos={-0.7}
+            postMargin={33}
+            headColor="#4b5563"
+            postColor="#4b5563"
+            bulbColor="#4b5563"
+            rayColor="#4b5563"
+            dotColor="#4b5563"
+          />
+          <p>&copy; 2026 Lindocode Digital. All rights reserved.</p>
         </div>
       </div>
     </footer>

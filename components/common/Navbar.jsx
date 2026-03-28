@@ -3,6 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import Logo from "./Logo";
 import "./Navbar.css";
 
 export default function Navbar() {
@@ -15,9 +16,29 @@ export default function Navbar() {
     <header className="navbar">
       <div className="container">
         <div className="navbar-content">
-          {/* <Link href="/" className="brand"> */}
-          {/*   <img src="/lindocode.svg" alt="Logo" class="logo" /> */}
-          {/* </Link> */}
+          <Link
+            href="/"
+            className="brand"
+            onClick={() => setMobileMenuOpen(false)}
+          >
+            <Logo
+              size="medium"
+              scale={0.6}
+              postWidth={0.9}
+              dotWidth={1.5}
+              bulbWidth={0.7}
+              headWidth={2.3}
+              headPos={-1.7}
+              rayPos={-0.7}
+              postMargin={33}
+              headColor="#ffffff"
+              postColor="#ffffff"
+              bulbColor="#ffffff"
+              rayColor="#ffffff"
+              dotColor="#C90201"
+            />
+            <span className="brand-text">Lindocode</span>
+          </Link>
 
           <button
             className={`mobile-menu-btn ${mobileMenuOpen ? "active" : ""}`}
