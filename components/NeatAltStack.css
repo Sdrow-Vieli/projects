@@ -9,7 +9,16 @@
   overflow: visible;
   margin-top: 5rem;
 }
+h1,
+h2,
+h3,
+h4 {
+  text-align: center;
+}
 
+p {
+  margin: 0.5em 0;
+}
 .stack-cards__item {
   position: sticky !important;
   width: 90%;
@@ -17,22 +26,17 @@
   margin: 0 auto var(--stack-cards-gap) auto;
   background: white;
   border-radius: 8px;
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.8);
   transform-origin: center top;
   overflow: visible;
   will-change: transform, opacity;
-}
-
-.stack-cards__item {
-  z-index: -1 !important;
 }
 
 .stack-cards__item-large {
   width: 100% !important;
   min-width: 100% !important;
   margin: 0 0 var(--stack-cards-gap) 0 !important;
-
-  background: linear-gradient(180deg, #fbf6f3 0%, #e3ab9a 70%);
+  text-align: center;
+  background: linear-gradient(180deg, #fbf6f3 0%, #e3ab9a 60%, #f6f6f6 90%);
 }
 
 /* Rest of your CSS remains the same */
@@ -128,9 +132,6 @@
   display: flex;
   flex-direction: column;
   padding: 40px;
-
-  position: relative;
-  overflow: visible;
 }
 
 .stats-grid {
@@ -153,9 +154,14 @@
     opacity 0.5s ease,
     transform 0.5s ease;
 }
+
 .stat-item.visible {
   opacity: 1;
   transform: scale(1);
+}
+
+.stat-item:hover {
+  transform: scale(1.1) !important;
 }
 
 .info-images-grid {
@@ -317,6 +323,9 @@
 
   .info-images-grid {
     grid-template-columns: 1fr;
+  }
+  .card-gucci-bg {
+    border-radius: 8px 8px 0 0;
   }
 }
 

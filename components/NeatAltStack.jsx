@@ -235,7 +235,7 @@ const StackPair = ({
         ref={(el) => (itemsRef.current[0] = el)}
         style={{
           top: `${stickyStartPosition}px`,
-          boxShadow: "0 8px 15px rgba(0,0,0,0.8)",
+          boxShadow: "0 8px 15px rgba(0,0,0,0.6)",
         }}
       >
         <div className={`grid ${pairIndex % 2 === 1 ? "reverse-grid" : ""}`}>
@@ -282,7 +282,14 @@ const StackPair = ({
             </div>
           </div>
 
-          <div className="col-6 card-gucci-bg" style={{ overflow: "visible" }}>
+          <div
+            className="col-6 card-gucci-bg"
+            style={{
+              display: "flex",
+              overflow: "visible",
+              alignItems: "center",
+            }}
+          >
             <a href={previewCard.link || "#"}>
               <Image
                 className="card-image block width-100% height-100% object-cover"
@@ -293,9 +300,7 @@ const StackPair = ({
                 style={{
                   transform:
                     previewCard.imgTransform ||
-                    (isExtraLg
-                      ? "rotate(3.5deg) scale(.9)"
-                      : "rotate(3.5deg) scale(.5)"),
+                    (isExtraLg ? "rotate(3.5deg) " : "rotate(3.5deg) "),
                   transition: "transform 0.45s ease",
                 }}
               />
@@ -310,9 +315,9 @@ const StackPair = ({
         ref={(el) => (itemsRef.current[1] = el)}
         style={{
           top: `${stickyStartPosition}px`,
-          boxShadow: "0 10px 20px rgba(0,0,0,0.9)",
+          boxShadow: "0 -5px 10px -4px rgba(0,0,0,0.3)",
           paddingBottom: ".1em",
-          marginBottom: "4em",
+          "--stack-cards-gap": "-2rem",
         }}
       >
         <div className="info-rich-layout">
