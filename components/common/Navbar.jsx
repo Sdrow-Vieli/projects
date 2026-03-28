@@ -15,9 +15,9 @@ export default function Navbar() {
     <header className="navbar">
       <div className="container">
         <div className="navbar-content">
-          <Link href="/" className="brand">
-            <img src="/lindocode.svg" alt="Logo" class="logo" />
-          </Link>
+          {/* <Link href="/" className="brand"> */}
+          {/*   <img src="/lindocode.svg" alt="Logo" class="logo" /> */}
+          {/* </Link> */}
 
           <button
             className={`mobile-menu-btn ${mobileMenuOpen ? "active" : ""}`}

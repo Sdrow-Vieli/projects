@@ -21,3 +21,26 @@
 .main-full-width > * {
   width: 100%;
 }
+
+/* Default layout with sidebar */
+.default-layout-grid {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 40px;
+}
+
+.main-content {
+  min-width: 0;
+}
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .default-layout-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .main {
+    padding: 20px 0;
+  }
+}

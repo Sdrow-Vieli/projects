@@ -2,15 +2,13 @@
 
 import FullWidthLayout from "@/components/layouts/FullWidthLayout";
 import NeatAltStack from "@/components/NeatAltStack";
-import cardsData from "@/data/lazy_appz.json";
+import cardsData from "@/data/projects.json";
 
 export default function Projects() {
-  const cards = cardsData.cards || [];
-
   return (
     <FullWidthLayout showHero={false}>
       <NeatAltStack
-        cards={cards}
+        cards={cardsData.webApps}
         multipleMockupWidth={100}
         stickyStartPosition={100}
       />

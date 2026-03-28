@@ -6,6 +6,7 @@ import Image from "next/image";
 import DownArrow from "./DownArrow";
 import FigmaEmbedModal from "./FigmaEmbedModal";
 import "./NeatAltStack.css";
+import technologyIcons from "@/data/lazy_appz.json";
 
 const StackPair = ({
   pair,
