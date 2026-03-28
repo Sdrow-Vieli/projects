@@ -50,7 +50,8 @@ p {
   min-width: 100% !important;
   margin: 0 0 var(--stack-cards-gap) 0 !important;
   text-align: center;
-  background: linear-gradient(180deg, #fbf6f3 0%, #e3ab9a 60%, #f6f6f6 90%);
+  border-radius: 0 0 5em 5em;
+  background: linear-gradient(180deg, #fbf6f3 0%, #e3ab9a 70%);
 }
 
 /* Rest of your CSS remains the same */
