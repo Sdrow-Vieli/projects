@@ -6,8 +6,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+
   overflow: visible;
-  margin-top: 5rem;
 }
 h1,
 h2,
@@ -15,7 +15,21 @@ h3,
 h4 {
   text-align: center;
 }
+.height-100\% {
+  height: 100%;
+}
 
+.padding-md {
+  padding: 16px;
+}
+
+.width-100\% {
+  width: 100%;
+}
+
+.object-cover {
+  object-fit: cover;
+}
 p {
   margin: 0.5em 0;
 }
@@ -63,6 +77,7 @@ p {
 
 .text-component {
   position: relative;
+  text-align: center;
 }
 
 .padding-md {
@@ -114,6 +129,7 @@ p {
     ),
     linear-gradient(180deg, #bcd7db 0%, #d7d6d1 45%, #f2a07c 100%);
   overflow: hidden;
+  justify-content: center;
 }
 
 .card-image {
@@ -353,6 +369,10 @@ p {
   .preview-card {
     position: relative;
     overflow: visible;
+    min-height: 400px;
+  }
+  .card-gucci-bg {
+    min-height: 400px;
   }
 
   .preview-card__text {

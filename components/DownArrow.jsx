@@ -1,26 +1,45 @@
 "use client";
 
-import "./DownArrow.css";
+const DownArrow = ({ onClick, color = "#333", space = "20px" }) => {
+  const styles = {
+    container: {
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      cursor: "pointer",
+    },
+    arrow: {
+      width: "30px",
+      height: "30px",
+      borderRight: `10px solid ${color}`,
+      borderBottom: `10px solid ${color}`,
+      transform: "rotate(45deg)",
+      animation: "bounce 2s infinite",
+      margin: `${space}`,
+    },
+    keyframes: `
+      @keyframes bounce {
+        0%, 20%, 50%, 80%, 100% {
+          transform: rotate(45deg) translateY(0);
+        }
+        40% {
+          transform: rotate(45deg) translateY(-10px);
+        }
+        60% {
+          transform: rotate(45deg) translateY(-5px);
+        }
+      }
+    `,
+  };
 
-export default function DownArrow({ color = "white", space = "0" }) {
   return (
-    <div className="down-arrow" style={{ marginTop: space }}>
-      <svg
-        width="40"
-        height="40"
-        viewBox="0 0 24 24"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        style={{ color }}
-      >
-        <path
-          d="M12 5V19M12 19L19 12M12 19L5 12"
-          stroke="currentColor"
-          strokeWidth="2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        />
-      </svg>
-    </div>
+    <>
+      <style>{styles.keyframes}</style>
+      <div style={styles.container} onClick={onClick}>
+        <div style={styles.arrow}></div>
+      </div>
+    </>
   );
-}
+};
+
+export default DownArrow;

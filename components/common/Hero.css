@@ -1,16 +1,15 @@
 .hero {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  color: white;
+  background: transparent;
   padding: 80px 0;
   text-align: center;
   position: relative;
   overflow: hidden;
+  margin-top: -1px;
 }
 
 .hero-content {
   position: relative;
   z-index: 1;
-  max-width: 800px;
   margin: 0 auto;
 }
 
@@ -18,13 +17,46 @@
   font-size: 3rem;
   margin-bottom: 20px;
   animation: fadeInUp 0.8s ease;
+  position: relative;
+  display: inline-block;
+  background: black;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Red line that materializes under hero-title */
+.hero-title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background: #ff0000;
+  border-radius: 3px;
+  animation: materializeLine 0.8s ease 0.4s forwards;
+}
+
+@keyframes materializeLine {
+  0% {
+    width: 0;
+    opacity: 0;
+  }
+  100% {
+    width: 20%;
+    opacity: 1;
+  }
 }
 
 .hero-subtitle {
   font-size: 1.2rem;
+  font-weight: 500;
   margin-bottom: 30px;
   opacity: 0.95;
   animation: fadeInUp 0.8s ease 0.2s backwards;
+  color: #6b6862;
 }
 
 .hero-buttons {
@@ -41,29 +73,72 @@
   transition: all 0.3s ease;
   cursor: pointer;
   font-weight: 500;
+  position: relative;
+  overflow: hidden;
 }
 
 .btn-primary {
-  background: white;
-  color: #667eea;
+  background: linear-gradient(135deg, #ffd700, #ffb347);
+  color: #17191e;
   border: none;
+  font-weight: bold;
+}
+
+.btn-primary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.5s ease;
+}
+
+.btn-primary:hover::before {
+  left: 100%;
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.4);
+  background: linear-gradient(135deg, #ffe55c, #ffc107);
 }
 
 .btn-secondary {
   background: transparent;
-  color: white;
-  border: 2px solid white;
+  color: #ffd700;
+  border: 2px solid #ffd700;
+  position: relative;
+  z-index: 1;
+}
+
+.btn-secondary::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background: linear-gradient(135deg, #ffd700, #ffb347);
+  transition: width 0.3s ease;
+  z-index: -1;
+}
+
+.btn-secondary:hover::before {
+  width: 100%;
 }
 
 .btn-secondary:hover {
-  background: white;
-  color: #667eea;
+  color: #17191e;
+  border-color: #ffd700;
   transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
 }
 
 @keyframes fadeInUp {
@@ -84,6 +159,22 @@
 
   .hero-title {
     font-size: 2rem;
+  }
+
+  .hero-title::after {
+    bottom: -8px;
+    height: 2px;
+  }
+
+  @keyframes materializeLine {
+    0% {
+      width: 0;
+      opacity: 0;
+    }
+    100% {
+      width: 30%;
+      opacity: 1;
+    }
   }
 
   .hero-subtitle {

@@ -1,11 +1,11 @@
-/* Same as React version */
 .navbar {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: var(--chrome-gradient);
   color: white;
   position: sticky;
   top: 0;
   z-index: 1000;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-bottom: none;
+  box-shadow: none;
 }
 
 .navbar-content {
