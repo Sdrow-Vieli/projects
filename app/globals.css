@@ -29,6 +29,7 @@
     #2a2d35 50%,
     #17191e 100%
   );
+
   --chip-red: #c90201;
   --chip-bg: #f8f7f6;
 }
@@ -43,12 +44,16 @@ body {
   overflow-x: hidden;
 }
 
-/* Background layer with image + gradients */
+/* ========================================================= */
+/* BACKGROUND LAYERS (FIXED STACKING ORDER) */
+/* ========================================================= */
+
+/* Base animated background */
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-  z-index: -2;
+  z-index: -3;
   pointer-events: none;
 
   background-image:
@@ -76,16 +81,15 @@ body::before {
   background-repeat: no-repeat;
 
   transform: scale(1.03);
-  transform-origin: center;
-  will-change: transform, background-position, filter;
   animation: bgFloat 40s ease-in-out infinite alternate;
 }
-/* Vignette effect */
+
+/* Vignette */
 body::after {
   content: "";
   position: fixed;
   inset: 0;
-  z-index: -1;
+  z-index: -2;
   pointer-events: none;
 
   background: radial-gradient(
@@ -98,85 +102,26 @@ body::after {
   animation: vignettePulse 20s ease-in-out infinite alternate;
 }
 
-/* Container */
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
+/* ========================================================= */
+/* CHIP BACKGROUND (NOW WORKS) */
+/* ========================================================= */
+
+body .chip-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1; /* ABOVE background, BELOW content */
+  pointer-events: none;
+  overflow: hidden;
 }
 
-/* Utility classes */
-.text-center {
-  text-align: center;
-}
-.mt-1 {
-  margin-top: 0.5rem;
-}
-.mt-2 {
-  margin-top: 1rem;
-}
-.mt-3 {
-  margin-top: 1.5rem;
-}
-.mb-1 {
-  margin-bottom: 0.5rem;
-}
-.mb-2 {
-  margin-bottom: 1rem;
-}
-.mb-3 {
-  margin-bottom: 1.5rem;
-}
-@keyframes bgFloat {
-  0% {
-    transform: scale(1.03) translate3d(0, 0, 0);
-    background-position:
-      30% 40%,
-      70% 60%,
-      10% 80%,
-      90% 20%,
-      center;
-    filter: saturate(1) brightness(1);
-  }
-
-  50% {
-    transform: scale(1.06) translate3d(0, -6px, 0);
-    background-position:
-      31% 39%,
-      69% 61%,
-      11% 79%,
-      89% 21%,
-      center;
-    filter: saturate(1.03) brightness(1.01);
-  }
-
-  100% {
-    transform: scale(1.08) translate3d(0, -12px, 0);
-    background-position:
-      32% 38%,
-      68% 62%,
-      12% 78%,
-      88% 22%,
-      center;
-    filter: saturate(1.05) brightness(1.02);
-  }
+body .chip-bg svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  opacity: 0.9;
 }
 
-@keyframes vignettePulse {
-  0% {
-    opacity: 0.88;
-  }
-
-  100% {
-    opacity: 1;
-  }
-}
-.lemon-font {
-  font-family: "Lemon Milk Pro", sans-serif;
-}
-
-/* =============================================================*/
-
+/* Chip animations */
 #chip-bg .trace {
   fill: none;
   stroke: var(--chip-red);
@@ -194,6 +139,7 @@ body::after {
 #chip-bg .trace.delay-1 {
   animation-delay: 0.2s, 3.2s;
 }
+
 #chip-bg .trace.delay-2 {
   animation-delay: 0.45s, 3.45s;
 }
@@ -208,6 +154,66 @@ body::after {
 
 #chip-bg .group {
   animation: drift 8s ease-in-out infinite alternate;
+}
+
+/* ========================================================= */
+/* UTILITIES */
+/* ========================================================= */
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.mt-1 {
+  margin-top: 0.5rem;
+}
+.mt-2 {
+  margin-top: 1rem;
+}
+.mt-3 {
+  margin-top: 1.5rem;
+}
+
+.mb-1 {
+  margin-bottom: 0.5rem;
+}
+.mb-2 {
+  margin-bottom: 1rem;
+}
+.mb-3 {
+  margin-bottom: 1.5rem;
+}
+
+.lemon-font {
+  font-family: "Lemon Milk Pro", sans-serif;
+}
+
+/* ========================================================= */
+/* ANIMATIONS */
+/* ========================================================= */
+
+@keyframes bgFloat {
+  0% {
+    transform: scale(1.03);
+  }
+  100% {
+    transform: scale(1.08) translateY(-12px);
+  }
+}
+
+@keyframes vignettePulse {
+  0% {
+    opacity: 0.88;
+  }
+  100% {
+    opacity: 1;
+  }
 }
 
 @keyframes chip-draw {
@@ -242,7 +248,7 @@ body::after {
 
 @keyframes drift {
   from {
-    transform: translateY(0px);
+    transform: translateY(0);
   }
   to {
     transform: translateY(5px);
