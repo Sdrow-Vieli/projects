@@ -1,26 +1,13 @@
 const nextConfig = {
+  basePath: "/projects",
+  reactStrictMode: true,
   images: {
     remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "via.placeholder.com",
-      },
-      {
-        protocol: "https",
-        hostname: "images.unsplash.com",
-      },
-      {
-        protocol: "https",
-        hostname: "picsum.photos",
-      },
-      {
-        protocol: "https",
-        hostname: "**", // Allow all domains (be careful in production)
-      },
+      { protocol: "https", hostname: "via.placeholder.com" },
+      { protocol: "https", hostname: "images.unsplash.com" },
+      { protocol: "https", hostname: "picsum.photos" },
     ],
   },
-
-  reactStrictMode: true,
 };
 
 export default nextConfig;
