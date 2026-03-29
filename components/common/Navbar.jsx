@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import ChipBackground from "./ChipBackgroundModal.jsx";
 import Logo from "./Logo";
 import "./Navbar.css";
 
@@ -83,8 +84,10 @@ export default function Navbar() {
                 rayColor="#000000"
                 dotColor="#C90201"
               />
-              {/* <span className="brand-text1 lemon-font">Lindocode</span> */}
-              {/* <span className="brand-text2 lemon-font">Digital</span> */}
+              <div>
+                <span className="brand-text1 lemon-font">Lindocode</span>
+                <span className="brand-text2 lemon-font">Digital</span>
+              </div>
             </Link>
 
             <div ref={menuWrapRef} className="navbar-menu-wrap">
@@ -144,6 +147,7 @@ export default function Navbar() {
             ref={menuContentRef}
             className={`menu-content ${menuVisible ? "visible" : ""}`}
           >
+            <ChipBackground />
             <div className="menu-inner">
               <div className="menu-items">
                 <Link href="/" className="menu-item-link" onClick={closeMenu}>

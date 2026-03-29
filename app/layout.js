@@ -4,7 +4,7 @@ import { Inter } from "next/font/google";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Next.js Stack Cards",
+  title: "Projects | Lindocode Digital",
   description: "A modern, responsive stack cards component built with Next.js",
 };
 

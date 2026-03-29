@@ -55,7 +55,7 @@ export default function Hero() {
                   justifyContent: "center",
 
                   transition: "all 0.3s ease",
-                  color: "#4D9DC9",
+                  color: "#6EB3D9",
                 }}
                 onMouseEnter={(e) => {
                   e.currentTarget.style.color = "#0077B5";

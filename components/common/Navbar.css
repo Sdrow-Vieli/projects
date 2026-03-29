@@ -27,15 +27,18 @@
 }
 
 .brand-text1 {
-  font-size: 1rem;
+  font-size: 1.1rem;
   font-weight: 700;
   line-height: 1;
+  color: black;
 }
 
 .brand-text2 {
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 500;
   line-height: 1;
+  color: black;
+  margin-left: 5px;
 }
 
 /* Desktop nav */
@@ -83,7 +86,7 @@
   justify-content: center;
   gap: 10px;
   transition: all 0.2s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
   position: relative;
   overflow: hidden;
 }
