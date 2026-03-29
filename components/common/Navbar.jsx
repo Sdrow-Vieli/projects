@@ -77,10 +77,10 @@ export default function Navbar() {
                 headPos={-1.7}
                 rayPos={-0.7}
                 postMargin={33}
-                headColor="#ffffff"
-                postColor="#ffffff"
-                bulbColor="#ffffff"
-                rayColor="#ffffff"
+                headColor="#000000"
+                postColor="#000000"
+                bulbColor="#000000"
+                rayColor="#000000"
                 dotColor="#C90201"
               />
               {/* <span className="brand-text1 lemon-font">Lindocode</span> */}
