@@ -149,7 +149,7 @@ export default function Navbar() {
           >
             <ChipBackground />
             <div className="menu-inner">
-              <div className="menu-items">
+              <div className="menu-items lemon-font">
                 <Link href="/" className="menu-item-link" onClick={closeMenu}>
                   <span className="menu-dot" />
                   Home

@@ -328,7 +328,7 @@ const StackPair = ({
         className="stack-cards__item-large bg radius-lg shadow-lg js-stack-cards__item"
         ref={(el) => (itemsRef.current[1] = el)}
         style={{
-          top: `${stickyStartPosition}px`, 
+          top: `${stickyStartPosition}px`,
           paddingBottom: ".1em",
           "--stack-cards-gap": "-2rem",
         }}
@@ -572,7 +572,7 @@ const StackPair = ({
           )}
         </section>
 
-        <div style={{ padding: "0 0 50px 0" }}>
+        <div style={{ padding: "30px" }}>
           <DownArrow color="red" space="0" />
         </div>
       </div>

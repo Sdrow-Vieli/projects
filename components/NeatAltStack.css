@@ -179,7 +179,7 @@ p {
 }
 
 .stat-item:hover {
-  transform: scale(1.1) !important;
+  transform: scale(1.05) !important;
 }
 
 .info-images-grid {
