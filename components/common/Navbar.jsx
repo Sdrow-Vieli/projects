@@ -83,8 +83,8 @@ export default function Navbar() {
                 rayColor="#ffffff"
                 dotColor="#C90201"
               />
-              <span className="brand-text1 lemon-font">Lindocode</span>
-              <span className="brand-text2 lemon-font">Digital</span>
+              {/* <span className="brand-text1 lemon-font">Lindocode</span> */}
+              {/* <span className="brand-text2 lemon-font">Digital</span> */}
             </Link>
 
             <div ref={menuWrapRef} className="navbar-menu-wrap">

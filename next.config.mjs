@@ -1,6 +1,4 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
-  // ✅ Use remotePatterns instead of domains (deprecated)
   images: {
     remotePatterns: [
       {
@@ -21,15 +19,8 @@ const nextConfig = {
       },
     ],
   },
-  // ❌ Remove swcMinify - it's enabled by default in Next.js 16
-  // swcMinify: true,  // DELETE THIS LINE
 
   reactStrictMode: true,
-
-  // Optional: Turbopack configuration (if you need it)
-  // turbopack: {
-  //   // Turbopack specific options
-  // },
 };
 
 export default nextConfig;

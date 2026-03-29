@@ -2,9 +2,12 @@
 
 import Link from "next/link";
 import Logo from "./Logo";
+import { FiGithub, FiLinkedin } from "react-icons/fi";
 import "./Footer.css";
 
 export default function Footer() {
+  const year = new Date().getFullYear();
+
   return (
     <footer className="footer">
       <div className="container">
@@ -58,23 +61,50 @@ export default function Footer() {
         </div>
 
         <div className="footer-bottom">
-          <Logo
-            size="compact"
-            scale={0.4}
-            postWidth={0.9}
-            dotWidth={1.5}
-            bulbWidth={0.7}
-            headWidth={2.3}
-            headPos={-1.7}
-            rayPos={-0.7}
-            postMargin={33}
-            headColor="#4b5563"
-            postColor="#4b5563"
-            bulbColor="#4b5563"
-            rayColor="#4b5563"
-            dotColor="#4b5563"
-          />
-          <p>&copy; 2026 Lindocode Digital. All rights reserved.</p>
+          <div className="footer-bottom-copy">
+            <span className="footer-bottom-logo">
+              <Logo
+                size="compact"
+                scale={0.4}
+                postWidth={0.9}
+                dotWidth={1.5}
+                bulbWidth={0.7}
+                headWidth={2.3}
+                headPos={-1.7}
+                rayPos={-0.7}
+                postMargin={33}
+                headColor="#bdc3c7"
+                postColor="#bdc3c7"
+                bulbColor="#bdc3c7"
+                rayColor="#bdc3c7"
+                dotColor="#bdc3c7"
+              />
+            </span>
+
+            <span>© {year} Lindocode Digital. All rights reserved.</span>
+          </div>
+
+          <div className="footer-bottom-socials">
+            <Link
+              href="https://www.linkedin.com/company/lindocode-digital-pty-ltd"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-social-link"
+              aria-label="LinkedIn"
+            >
+              <FiLinkedin />
+            </Link>
+
+            <Link
+              href="https://github.com/Lindocode-Digital"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="footer-social-link"
+              aria-label="GitHub"
+            >
+              <FiGithub />
+            </Link>
+          </div>
         </div>
       </div>
     </footer>

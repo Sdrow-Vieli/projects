@@ -56,7 +56,7 @@
 .footer-bottom {
   text-align: center;
   padding: 20px 0;
-  border-top: 1px solid #34495e;
+  border-top: 1px solid #c90201;
   color: #bdc3c7;
   font-size: 0.9rem;
 }
@@ -86,4 +86,73 @@
 
 .footer-brand h4 {
   margin: 0;
+}
+
+.footer-bottom {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  color: #bdc3c7;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+}
+
+.footer-bottom-copy {
+  order: 2;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-align: center;
+  font-size: 0.75rem;
+}
+
+.footer-bottom-logo {
+  display: inline-flex;
+  border-radius: 999px;
+  padding: 0.125rem;
+}
+
+.footer-bottom-socials {
+  order: 1;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.footer-social-link {
+  color: inherit;
+  text-decoration: none;
+  transition: transform 0.2s ease;
+}
+
+.footer-social-link:hover {
+  transform: scale(1.1);
+}
+
+@media (min-width: 640px) {
+  .footer-bottom {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+
+  .footer-bottom-copy {
+    order: 1;
+    width: auto;
+    justify-content: flex-start;
+    text-align: left;
+    gap: 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  .footer-bottom-socials {
+    order: 2;
+    width: auto;
+  }
 }

@@ -29,6 +29,8 @@
     #2a2d35 50%,
     #17191e 100%
   );
+  --chip-red: #c90201;
+  --chip-bg: #f8f7f6;
 }
 
 body {
@@ -171,4 +173,78 @@ body::after {
 }
 .lemon-font {
   font-family: "Lemon Milk Pro", sans-serif;
+}
+
+/* =============================================================*/
+
+#chip-bg .trace {
+  fill: none;
+  stroke: var(--chip-red);
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 600;
+  stroke-dashoffset: 600;
+  opacity: 0.9;
+  animation:
+    chip-draw 3s ease forwards,
+    chip-pulse 2.8s ease-in-out infinite 3s;
+}
+
+#chip-bg .trace.delay-1 {
+  animation-delay: 0.2s, 3.2s;
+}
+#chip-bg .trace.delay-2 {
+  animation-delay: 0.45s, 3.45s;
+}
+
+#chip-bg .node {
+  fill: #fff;
+  stroke: var(--chip-red);
+  stroke-width: 2;
+  transform-origin: center;
+  animation: node-pulse 2.4s ease-in-out infinite;
+}
+
+#chip-bg .group {
+  animation: drift 8s ease-in-out infinite alternate;
+}
+
+@keyframes chip-draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes chip-pulse {
+  0%,
+  100% {
+    opacity: 0.85;
+    filter: drop-shadow(0 0 0 rgba(201, 2, 1, 0));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 6px rgba(201, 2, 1, 0.22));
+  }
+}
+
+@keyframes node-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.9;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
+
+@keyframes drift {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(5px);
+  }
 }
