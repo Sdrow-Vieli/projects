@@ -53,8 +53,8 @@ p {
   min-width: 100% !important;
   margin: 0 0 var(--stack-cards-gap) 0 !important;
   text-align: center;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7) !important;
-  border-radius: 0 0 5em 5em;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.55) !important;
+  border-radius: 0 0 2em 2em;
   background: #f8e7e3;
 }
 
