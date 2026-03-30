@@ -2,6 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import ChipBackground from "./ChipBackground.jsx";
 
 export default function SideModal({ isOpen, onClose, children, title }) {
   const modalRef = useRef(null);
@@ -72,6 +73,7 @@ export default function SideModal({ isOpen, onClose, children, title }) {
               borderRadius: "30px 0 0 30px",
             }}
           >
+            {" "}
             <div
               style={{
                 padding: "1.25rem 1.5rem",
@@ -135,8 +137,7 @@ export default function SideModal({ isOpen, onClose, children, title }) {
                   <line x1="6" y1="6" x2="18" y2="18" />
                 </svg>
               </button>
-            </div>
-
+            </div>{" "}
             <div
               style={{
                 flex: 1,
@@ -145,6 +146,7 @@ export default function SideModal({ isOpen, onClose, children, title }) {
                 background: "#fafafa",
               }}
             >
+              {" "}
               {children}
             </div>
           </motion.div>
