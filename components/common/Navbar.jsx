@@ -153,16 +153,16 @@ export default function Navbar() {
               <div className="menu-items lemon-font">
                 <Link href="/" className="menu-item-link" onClick={closeMenu}>
                   <span className="menu-dot" />
-                  Home
+                  All Projects
                 </Link>
-                <Link
-                  href="/about"
-                  className="menu-item-link"
-                  onClick={closeMenu}
-                >
-                  <span className="menu-dot" />
-                  About
-                </Link>
+                {/* <Link */}
+                {/*   href="/about" */}
+                {/*   className="menu-item-link" */}
+                {/*   onClick={closeMenu} */}
+                {/* > */}
+                {/*   <span className="menu-dot" /> */}
+                {/*   About */}
+                {/* </Link> */}
                 <Link
                   href="/web-apps"
                   className="menu-item-link"

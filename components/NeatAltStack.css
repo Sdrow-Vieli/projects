@@ -358,10 +358,6 @@ p {
     margin-right: 0;
   }
 
-  .stack-cards__item:nth-child(even) .grid {
-    flex-direction: row-reverse;
-  }
-
   .text-component.padding-md {
     padding: 40px 60px;
   }
@@ -370,6 +366,7 @@ p {
     padding: 60px 80px;
   }
 } /* only for wide/row layout */
+
 @media (min-width: 1300px) {
   .preview-card {
     position: relative;
