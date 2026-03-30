@@ -1,5 +1,5 @@
 .stack-cards {
-  --stack-cards-gap: 0 50px 50px 50px;
+  --stack-cards-gap: 0 50px;
   position: relative;
   width: 100%;
   max-width: 100%;
