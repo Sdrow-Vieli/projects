@@ -34,7 +34,12 @@ const techItemVar = {
   visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.35 } },
 };
 
-const StackPair = ({ pair, pairIndex, stickyStartPosition }) => {
+const StackPair = ({
+  pair,
+  pairIndex,
+  stickyStartPosition,
+  startIndex = 0,
+}) => {
   const containerRef = useRef(null);
   const itemsRef = useRef([]);
   const contentRefs = useRef([]);
@@ -49,8 +54,10 @@ const StackPair = ({ pair, pairIndex, stickyStartPosition }) => {
 
   const [previewCard, detailsCard] = pair;
 
-  // Format project number with leading zero if needed
-  const projectNumber = String(pairIndex + 1).padStart(2, "0");
+  // Use a global index so numbering does not reset per stack instance
+  const globalProjectIndex = startIndex + pairIndex;
+  const projectNumber = String(globalProjectIndex + 1).padStart(2, "0");
+
   const getProjectNumberStyle = (index) => {
     const styles = [
       {
@@ -65,8 +72,8 @@ const StackPair = ({ pair, pairIndex, stickyStartPosition }) => {
     return styles[index % styles.length];
   };
 
-  // Use it in your component
-  const projectStyle = getProjectNumberStyle(pairIndex);
+  // Use the global index for alternating styles too
+  const projectStyle = getProjectNumberStyle(globalProjectIndex);
 
   useEffect(() => {
     const checkResponsive = () => {
@@ -518,16 +525,18 @@ const NeatAltStack = ({
   multipleMockupWidth = 100,
   cards = [],
   stickyStartPosition = 100,
+  startIndex = 0,
 }) => {
   return (
     <>
       {cards.map((pair, pairIndex) => (
         <StackPair
-          key={pairIndex}
+          key={startIndex + pairIndex}
           pair={pair}
           pairIndex={pairIndex}
           multipleMockupWidth={multipleMockupWidth}
           stickyStartPosition={stickyStartPosition}
+          startIndex={startIndex}
         />
       ))}
     </>
