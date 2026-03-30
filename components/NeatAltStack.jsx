@@ -3,17 +3,10 @@
 import { useRef, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
-import DownArrow from "./DownArrow";
-import FigmaEmbedModal from "./FigmaEmbedModal";
 import "./NeatAltStack.css";
 import technologyIcons from "@/data/lazy_appz.json";
 import SideModal from "./common/SideModal.jsx";
 import SideModalNeatAltStack from "./SideModalNeatAltStack.jsx";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-};
 
 const staggerContainer = {
   hidden: { opacity: 0 },
@@ -55,11 +48,6 @@ const mockupVariants = [
     visible: { opacity: 1, rotate: 0, y: 0, transition: { duration: 0.6 } },
   },
 ];
-
-/**
- * Separate modal-only stack renderer
- * Shows the related preview + details cards for the clicked preview image
- */
 
 const StackPair = ({
   pair,
@@ -470,142 +458,158 @@ const StackPair = ({
               </motion.div>
             </section>
           </div>
-
-          <section id={`mockup-section-${detailsCard.cardId || pairIndex}`}>
-            <motion.div
-              ref={(el) => (contentRefs.current[1] = el)}
-              data-index={1}
-              className={`content-section ${isVisible(1) ? "visible" : ""} mockups`}
-              style={{
-                width: "100%",
-                padding: isMobile ? "30px" : "50px",
-                marginTop: "-25px",
-              }}
+          <div className="hero-buttons" style={{ margin: "2rem" }}>
+            <button
+              className="btn btn-primary"
+              onClick={handlePreviewImageClick}
+              style={{ cursor: "pointer" }}
             >
-              <motion.h2
-                className="h2-brush"
-                style={{ color: "#333", marginBottom: "10px" }}
-                initial="hidden"
-                animate={isVisible(1) ? "visible" : "hidden"}
-                variants={fadeUp}
-              >
-                Interface Mockups
-              </motion.h2>
-
-              <motion.div
-                className="info-images-grid"
-                initial="hidden"
-                animate={isVisible(1) ? "visible" : "hidden"}
-                variants={staggerContainer}
-              >
-                {detailsCard.mockupImages?.map((mockup, idx) => {
-                  const v = mockupVariants[idx % mockupVariants.length];
-
-                  return (
-                    <motion.div
-                      key={idx}
-                      className="info-image-item"
-                      variants={v}
-                      whileHover={{ y: -4 }}
-                    >
-                      <Image
-                        src={mockup.src}
-                        alt={mockup.alt}
-                        width={400}
-                        height={300}
-                        style={{
-                          width: `${multipleMockupWidth}%`,
-                          height: "auto",
-                          objectFit: "cover",
-                        }}
-                      />
-                      <div
-                        className="info-image-caption"
-                        data-badge="PREVIEW DETAILS"
-                      >
-                        {mockup.caption}
-                      </div>
-                    </motion.div>
-                  );
-                })}
-              </motion.div>
-            </motion.div>
-          </section>
-
-          <section id={`link-section-${detailsCard.cardId || pairIndex}`}>
-            {detailsCard.link && (
-              <motion.div
-                ref={(el) => (contentRefs.current[2] = el)}
-                data-index={2}
-                className={`content-section info-content-section info-content-last-section ${
-                  isVisible(2) ? "visible" : ""
-                }`}
-                style={{
-                  textAlign: "center",
-                  backgroundColor: "transparent",
-                  paddingTop: "3em",
-                  borderBottom: "4px solid transparent",
-                }}
-                initial="hidden"
-                animate={isVisible(2) ? "visible" : "hidden"}
-                variants={fadeUp}
-              >
-                <motion.a
-                  href={detailsCard.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="cta-button"
-                  whileHover={{
-                    y: -3,
-                    boxShadow: "0 10px 25px rgba(102, 126, 234, 0.4)",
-                  }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  Visit Live Site
-                </motion.a>
-              </motion.div>
-            )}
-
-            {detailsCard.button && (
-              <motion.div
-                ref={(el) => (contentRefs.current[2] = el)}
-                data-index={2}
-                className={`content-section info-content-section info-content-last-section ${
-                  isVisible(2) ? "visible" : ""
-                }`}
-                style={{
-                  textAlign: "center",
-                  backgroundColor: "transparent",
-                  paddingTop: "3em",
-                  borderBottom: "4px solid transparent",
-                }}
-                initial="hidden"
-                animate={isVisible(2) ? "visible" : "hidden"}
-                variants={fadeUp}
-              >
-                <motion.button
-                  className="cta-button"
-                  onClick={() => setOpenModal(true)}
-                  whileHover={{
-                    y: -3,
-                    boxShadow: "0 10px 25px rgba(102, 126, 234, 0.4)",
-                  }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  {detailsCard.buttonText || "Learn More"}
-                </motion.button>
-
-                <FigmaEmbedModal
-                  open={openModal}
-                  onClose={() => setOpenModal(false)}
-                />
-              </motion.div>
-            )}
-          </section>
-
-          <div style={{ padding: "30px" }}>
-            <DownArrow color="red" space="0" />
+              View Details
+            </button>
+            <button
+              className="btn btn-secondary"
+              onClick={handlePreviewImageClick}
+              style={{ cursor: "pointer" }}
+            >
+              View Demo
+            </button>
           </div>
+
+          {/*   <section id={`mockup-section-${detailsCard.cardId || pairIndex}`}> */}
+          {/*     <motion.div */}
+          {/*       ref={(el) => (contentRefs.current[1] = el)} */}
+          {/*       data-index={1} */}
+          {/*       className={`content-section ${isVisible(1) ? "visible" : ""} mockups`} */}
+          {/*       style={{ */}
+          {/*         width: "100%", */}
+          {/*         padding: isMobile ? "30px" : "50px", */}
+          {/*         marginTop: "-25px", */}
+          {/*       }} */}
+          {/*     > */}
+          {/*       <motion.h2 */}
+          {/*         className="h2-brush" */}
+          {/*         style={{ color: "#333", marginBottom: "10px" }} */}
+          {/*         initial="hidden" */}
+          {/*         animate={isVisible(1) ? "visible" : "hidden"} */}
+          {/*         variants={fadeUp} */}
+          {/*       > */}
+          {/*         Interface Mockups */}
+          {/*       </motion.h2> */}
+          {/**/}
+          {/*       <motion.div */}
+          {/*         className="info-images-grid" */}
+          {/*         initial="hidden" */}
+          {/*         animate={isVisible(1) ? "visible" : "hidden"} */}
+          {/*         variants={staggerContainer} */}
+          {/*       > */}
+          {/*         {detailsCard.mockupImages?.map((mockup, idx) => { */}
+          {/*           const v = mockupVariants[idx % mockupVariants.length]; */}
+          {/**/}
+          {/*           return ( */}
+          {/*             <motion.div */}
+          {/*               key={idx} */}
+          {/*               className="info-image-item" */}
+          {/*               variants={v} */}
+          {/*               whileHover={{ y: -4 }} */}
+          {/*             > */}
+          {/*               <Image */}
+          {/*                 src={mockup.src} */}
+          {/*                 alt={mockup.alt} */}
+          {/*                 width={400} */}
+          {/*                 height={300} */}
+          {/*                 style={{ */}
+          {/*                   width: `${multipleMockupWidth}%`, */}
+          {/*                   height: "auto", */}
+          {/*                   objectFit: "cover", */}
+          {/*                 }} */}
+          {/*               /> */}
+          {/*               <div */}
+          {/*                 className="info-image-caption" */}
+          {/*                 data-badge="PREVIEW DETAILS" */}
+          {/*               > */}
+          {/*                 {mockup.caption} */}
+          {/*               </div> */}
+          {/*             </motion.div> */}
+          {/*           ); */}
+          {/*         })} */}
+          {/*       </motion.div> */}
+          {/*     </motion.div> */}
+          {/*   </section> */}
+          {/**/}
+          {/*   <section id={`link-section-${detailsCard.cardId || pairIndex}`}> */}
+          {/*     {detailsCard.link && ( */}
+          {/*       <motion.div */}
+          {/*         ref={(el) => (contentRefs.current[2] = el)} */}
+          {/*         data-index={2} */}
+          {/*         className={`content-section info-content-section info-content-last-section ${ */}
+          {/*           isVisible(2) ? "visible" : "" */}
+          {/*         }`} */}
+          {/*         style={{ */}
+          {/*           textAlign: "center", */}
+          {/*           backgroundColor: "transparent", */}
+          {/*           paddingTop: "3em", */}
+          {/*           borderBottom: "4px solid transparent", */}
+          {/*         }} */}
+          {/*         initial="hidden" */}
+          {/*         animate={isVisible(2) ? "visible" : "hidden"} */}
+          {/*         variants={fadeUp} */}
+          {/*       > */}
+          {/*         <motion.a */}
+          {/*           href={detailsCard.link} */}
+          {/*           target="_blank" */}
+          {/*           rel="noopener noreferrer" */}
+          {/*           className="cta-button" */}
+          {/*           whileHover={{ */}
+          {/*             y: -3, */}
+          {/*             boxShadow: "0 10px 25px rgba(102, 126, 234, 0.4)", */}
+          {/*           }} */}
+          {/*           whileTap={{ scale: 0.98 }} */}
+          {/*         > */}
+          {/*           Visit Live Site */}
+          {/*         </motion.a> */}
+          {/*       </motion.div> */}
+          {/*     )} */}
+          {/**/}
+          {/*     {detailsCard.button && ( */}
+          {/*       <motion.div */}
+          {/*         ref={(el) => (contentRefs.current[2] = el)} */}
+          {/*         data-index={2} */}
+          {/*         className={`content-section info-content-section info-content-last-section ${ */}
+          {/*           isVisible(2) ? "visible" : "" */}
+          {/*         }`} */}
+          {/*         style={{ */}
+          {/*           textAlign: "center", */}
+          {/*           backgroundColor: "transparent", */}
+          {/*           paddingTop: "3em", */}
+          {/*           borderBottom: "4px solid transparent", */}
+          {/*         }} */}
+          {/*         initial="hidden" */}
+          {/*         animate={isVisible(2) ? "visible" : "hidden"} */}
+          {/*         variants={fadeUp} */}
+          {/*       > */}
+          {/*         <motion.button */}
+          {/*           className="cta-button" */}
+          {/*           onClick={() => setOpenModal(true)} */}
+          {/*           whileHover={{ */}
+          {/*             y: -3, */}
+          {/*             boxShadow: "0 10px 25px rgba(102, 126, 234, 0.4)", */}
+          {/*           }} */}
+          {/*           whileTap={{ scale: 0.98 }} */}
+          {/*         > */}
+          {/*           {detailsCard.buttonText || "Learn More"} */}
+          {/*         </motion.button> */}
+          {/**/}
+          {/*         <FigmaEmbedModal */}
+          {/*           open={openModal} */}
+          {/*           onClose={() => setOpenModal(false)} */}
+          {/*         /> */}
+          {/*       </motion.div> */}
+          {/*     )} */}
+          {/*   </section> */}
+          {/**/}
+          {/*   <div style={{ padding: "30px" }}> */}
+          {/*     <DownArrow color="red" space="0" /> */}
+          {/*   </div> */}
         </div>
       </div>
 

@@ -3,7 +3,7 @@
 import { useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import ChipBackground from "./ChipBackground.jsx";
-
+import Logo from "./Logo.jsx";
 export default function SideModal({ isOpen, onClose, children, title }) {
   const modalRef = useRef(null);
 
@@ -87,16 +87,28 @@ export default function SideModal({ isOpen, onClose, children, title }) {
                 zIndex: 10,
               }}
             >
-              <h2
-                style={{
-                  fontSize: "1.25rem",
-                  fontWeight: "700",
-                  margin: 0,
-                  color: "#222",
-                }}
-              >
-                {title}
-              </h2>
+              <a href="/" className="brand" onClick={onClose}>
+                <Logo
+                  size="medium"
+                  scale={0.6}
+                  postWidth={0.9}
+                  dotWidth={1.5}
+                  bulbWidth={0.7}
+                  headWidth={2.3}
+                  headPos={-1.7}
+                  rayPos={-0.7}
+                  postMargin={33}
+                  headColor="#000000"
+                  postColor="#000000"
+                  bulbColor="#000000"
+                  rayColor="#000000"
+                  dotColor="#C90201"
+                />
+                <div>
+                  <span className="brand-text1 lemon-font">Lindocode</span>
+                  <span className="brand-text2 lemon-font">Digital</span>
+                </div>
+              </a>
 
               <button
                 onClick={onClose}

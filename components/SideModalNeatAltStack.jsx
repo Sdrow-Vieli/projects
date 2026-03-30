@@ -65,6 +65,7 @@ export default function SideModalNeatAltStack({
         display: "flex",
         flexDirection: "column",
         gap: "1.5rem",
+        textAlign: "center",
       }}
     >
       {" "}
@@ -215,7 +216,11 @@ export default function SideModalNeatAltStack({
 
         {/* Metrics */}
         {detailsCard.stats?.length > 0 && (
-          <section style={{ marginBottom: "2rem" }}>
+          <section
+            style={{
+              marginBottom: "2rem",
+            }}
+          >
             <h3
               className="h2-brush"
               style={{
@@ -242,17 +247,16 @@ export default function SideModalNeatAltStack({
                   key={index}
                   variants={statItemVar}
                   style={{
-                    background: "#f9fafb",
-                    border: "1px solid #ececec",
                     borderRadius: "16px",
                     padding: "1rem",
                   }}
+                  className="stat-item"
                 >
                   <div
                     style={{
                       fontSize: "1.6rem",
                       fontWeight: "700",
-                      color: "#111",
+                      color: "#ffffff",
                     }}
                   >
                     {stat.value}
@@ -260,7 +264,7 @@ export default function SideModalNeatAltStack({
                   <div
                     style={{
                       fontSize: "0.9rem",
-                      color: "#666",
+                      color: "#ffffff",
                       marginTop: "0.25rem",
                     }}
                   >
@@ -274,23 +278,20 @@ export default function SideModalNeatAltStack({
 
         {/* Tech */}
         {techList.length > 0 && (
-          <section style={{ marginBottom: "2rem" }}>
-            <h3
-              className="h2-brush"
-              style={{
-                marginBottom: "1rem",
-                fontSize: "1.25rem",
-                color: "#222",
-              }}
-            >
-              Technologies
-            </h3>
-
+          <section
+            style={{
+              marginBottom: "2rem",
+              justifyContent: "center",
+              justifyItems: "center",
+            }}
+          >
             <motion.div
               style={{
                 display: "flex",
                 flexWrap: "wrap",
                 gap: "1rem",
+                justifyContent: "center",
+                justifyItems: "center",
               }}
               variants={statsStagger}
               initial="hidden"
@@ -311,15 +312,12 @@ export default function SideModalNeatAltStack({
                     color: tech.color,
                     fontWeight: 500,
                     padding: "0.75rem 1rem",
-                    borderRadius: "14px",
-                    background: "#fafafa",
-                    border: "1px solid #eee",
                   }}
                 >
                   {tech.path && (
                     <svg
-                      width="22"
-                      height="22"
+                      width="30"
+                      height="30"
                       viewBox="0 0 24 24"
                       fill="currentColor"
                     >
@@ -371,6 +369,7 @@ export default function SideModalNeatAltStack({
                       background: "transparent",
                       overflow: "hidden",
                     }}
+                    className="info-image-item "
                   >
                     <Image
                       src={mockup.src}
@@ -388,9 +387,11 @@ export default function SideModalNeatAltStack({
                       style={{
                         padding: "0.9rem 1rem",
                         fontSize: "0.9rem",
-                        color: "#555",
+                        color: "#ffffff",
                         fontWeight: 500,
                       }}
+                      className="info-image-caption"
+                      data-badge="PREVIEW DETAILS"
                     >
                       {mockup.caption}
                     </div>
@@ -415,11 +416,12 @@ export default function SideModalNeatAltStack({
                   justifyContent: "center",
                   padding: "0.9rem 1.4rem",
                   borderRadius: "999px",
-                  background: "#111",
+
                   color: "#fff",
                   textDecoration: "none",
                   fontWeight: 600,
                 }}
+                className="cta-button"
               >
                 Visit Live Site
               </a>
