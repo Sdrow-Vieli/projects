@@ -67,7 +67,8 @@ export default function Navbar() {
       <header className="navbar">
         <div className="container">
           <div className="navbar-content">
-            <Link href="/" className="brand" onClick={closeMenu}>
+            {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+            <a href="/" className="brand" onClick={closeMenu}>
               <Logo
                 size="medium"
                 scale={0.6}
@@ -88,7 +89,7 @@ export default function Navbar() {
                 <span className="brand-text1 lemon-font">Lindocode</span>
                 <span className="brand-text2 lemon-font">Digital</span>
               </div>
-            </Link>
+            </a>
 
             <div ref={menuWrapRef} className="navbar-menu-wrap">
               <button
