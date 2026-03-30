@@ -42,7 +42,7 @@ export default function SideModal({ isOpen, onClose, children, title }) {
             style={{
               position: "fixed",
               inset: 0,
-              backgroundColor: "rgba(0, 0, 0, 0.5)",
+              backgroundColor: "rgba(0, 0, 0, 0.7)",
               backdropFilter: "blur(4px)",
               zIndex: 1000,
             }}
@@ -68,6 +68,8 @@ export default function SideModal({ isOpen, onClose, children, title }) {
               overflow: "hidden",
               display: "flex",
               flexDirection: "column",
+              borderLeft: "4px solid red",
+              borderRadius: "30px 0 0 30px",
             }}
           >
             <div

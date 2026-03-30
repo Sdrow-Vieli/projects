@@ -14,7 +14,7 @@
   width: 90%;
   max-width: 600px;
   height: 100vh;
-  background: white;
+  background: transparent;
   box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
   z-index: 1001;
   overflow-y: auto;
@@ -28,7 +28,7 @@
 }
 
 .side-modal-content::-webkit-scrollbar-track {
-  background: #f1f1f1;
+  background: trn;
 }
 
 .side-modal-content::-webkit-scrollbar-thumb {
