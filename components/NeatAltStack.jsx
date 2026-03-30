@@ -34,32 +34,12 @@ const techItemVar = {
   visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.35 } },
 };
 
-const mockupVariants = [
-  {
-    hidden: { opacity: 0, y: 18 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.55 } },
-  },
-  {
-    hidden: { opacity: 0, scale: 0.965 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.55 } },
-  },
-  {
-    hidden: { opacity: 0, rotate: -1.4, y: 10 },
-    visible: { opacity: 1, rotate: 0, y: 0, transition: { duration: 0.6 } },
-  },
-];
-
-const StackPair = ({
-  pair,
-  pairIndex,
-  multipleMockupWidth,
-  stickyStartPosition,
-}) => {
+const StackPair = ({ pair, pairIndex, stickyStartPosition }) => {
   const containerRef = useRef(null);
   const itemsRef = useRef([]);
   const contentRefs = useRef([]);
   const [visibleContents, setVisibleContents] = useState([]);
-  const [openModal, setOpenModal] = useState(false);
+
   const [isMobile, setIsMobile] = useState(false);
   const [isExtraLg, setIsExtraLg] = useState(false);
 
@@ -68,6 +48,25 @@ const StackPair = ({
   const [imageModalOpen, setImageModalOpen] = useState(false);
 
   const [previewCard, detailsCard] = pair;
+
+  // Format project number with leading zero if needed
+  const projectNumber = String(pairIndex + 1).padStart(2, "0");
+  const getProjectNumberStyle = (index) => {
+    const styles = [
+      {
+        color: "#D4AF37", // gold
+        gradient: "linear-gradient(135deg, #D4AF37, #FFD700)",
+      },
+      {
+        color: "#111111", // near black
+        gradient: "linear-gradient(135deg, #000000, #434343)",
+      },
+    ];
+    return styles[index % styles.length];
+  };
+
+  // Use it in your component
+  const projectStyle = getProjectNumberStyle(pairIndex);
 
   useEffect(() => {
     const checkResponsive = () => {
@@ -249,8 +248,30 @@ const StackPair = ({
       <div
         className="stack-cards js-stack-cards"
         ref={containerRef}
-        style={{ marginBottom: "8rem" }}
+        style={{ marginBottom: "5rem" }}
       >
+        {/* Dynamic Project Number Header */}
+        <div className="project-number-container">
+          <h2
+            className="press-start-font project-number"
+            style={{
+              background: projectStyle.gradient,
+              WebkitBackgroundClip: "text",
+              backgroundClip: "text",
+              color: "transparent",
+              margin: "1em",
+            }}
+          >
+            {" "}
+            PROJECT {projectNumber}
+          </h2>
+          {previewCard.projectType && (
+            <span className="project-type-badge">
+              {previewCard.projectType}
+            </span>
+          )}
+        </div>
+
         {/* Preview Card */}
         <div
           data-theme="default"
@@ -347,7 +368,7 @@ const StackPair = ({
           style={{
             top: `${stickyStartPosition}px`,
             paddingBottom: ".1em",
-            "--stack-cards-gap": "-2rem",
+            "--stack-cards-gap": "-1rem",
           }}
         >
           <div className="info-rich-layout">
@@ -474,142 +495,6 @@ const StackPair = ({
               View Demo
             </button>
           </div>
-
-          {/*   <section id={`mockup-section-${detailsCard.cardId || pairIndex}`}> */}
-          {/*     <motion.div */}
-          {/*       ref={(el) => (contentRefs.current[1] = el)} */}
-          {/*       data-index={1} */}
-          {/*       className={`content-section ${isVisible(1) ? "visible" : ""} mockups`} */}
-          {/*       style={{ */}
-          {/*         width: "100%", */}
-          {/*         padding: isMobile ? "30px" : "50px", */}
-          {/*         marginTop: "-25px", */}
-          {/*       }} */}
-          {/*     > */}
-          {/*       <motion.h2 */}
-          {/*         className="h2-brush" */}
-          {/*         style={{ color: "#333", marginBottom: "10px" }} */}
-          {/*         initial="hidden" */}
-          {/*         animate={isVisible(1) ? "visible" : "hidden"} */}
-          {/*         variants={fadeUp} */}
-          {/*       > */}
-          {/*         Interface Mockups */}
-          {/*       </motion.h2> */}
-          {/**/}
-          {/*       <motion.div */}
-          {/*         className="info-images-grid" */}
-          {/*         initial="hidden" */}
-          {/*         animate={isVisible(1) ? "visible" : "hidden"} */}
-          {/*         variants={staggerContainer} */}
-          {/*       > */}
-          {/*         {detailsCard.mockupImages?.map((mockup, idx) => { */}
-          {/*           const v = mockupVariants[idx % mockupVariants.length]; */}
-          {/**/}
-          {/*           return ( */}
-          {/*             <motion.div */}
-          {/*               key={idx} */}
-          {/*               className="info-image-item" */}
-          {/*               variants={v} */}
-          {/*               whileHover={{ y: -4 }} */}
-          {/*             > */}
-          {/*               <Image */}
-          {/*                 src={mockup.src} */}
-          {/*                 alt={mockup.alt} */}
-          {/*                 width={400} */}
-          {/*                 height={300} */}
-          {/*                 style={{ */}
-          {/*                   width: `${multipleMockupWidth}%`, */}
-          {/*                   height: "auto", */}
-          {/*                   objectFit: "cover", */}
-          {/*                 }} */}
-          {/*               /> */}
-          {/*               <div */}
-          {/*                 className="info-image-caption" */}
-          {/*                 data-badge="PREVIEW DETAILS" */}
-          {/*               > */}
-          {/*                 {mockup.caption} */}
-          {/*               </div> */}
-          {/*             </motion.div> */}
-          {/*           ); */}
-          {/*         })} */}
-          {/*       </motion.div> */}
-          {/*     </motion.div> */}
-          {/*   </section> */}
-          {/**/}
-          {/*   <section id={`link-section-${detailsCard.cardId || pairIndex}`}> */}
-          {/*     {detailsCard.link && ( */}
-          {/*       <motion.div */}
-          {/*         ref={(el) => (contentRefs.current[2] = el)} */}
-          {/*         data-index={2} */}
-          {/*         className={`content-section info-content-section info-content-last-section ${ */}
-          {/*           isVisible(2) ? "visible" : "" */}
-          {/*         }`} */}
-          {/*         style={{ */}
-          {/*           textAlign: "center", */}
-          {/*           backgroundColor: "transparent", */}
-          {/*           paddingTop: "3em", */}
-          {/*           borderBottom: "4px solid transparent", */}
-          {/*         }} */}
-          {/*         initial="hidden" */}
-          {/*         animate={isVisible(2) ? "visible" : "hidden"} */}
-          {/*         variants={fadeUp} */}
-          {/*       > */}
-          {/*         <motion.a */}
-          {/*           href={detailsCard.link} */}
-          {/*           target="_blank" */}
-          {/*           rel="noopener noreferrer" */}
-          {/*           className="cta-button" */}
-          {/*           whileHover={{ */}
-          {/*             y: -3, */}
-          {/*             boxShadow: "0 10px 25px rgba(102, 126, 234, 0.4)", */}
-          {/*           }} */}
-          {/*           whileTap={{ scale: 0.98 }} */}
-          {/*         > */}
-          {/*           Visit Live Site */}
-          {/*         </motion.a> */}
-          {/*       </motion.div> */}
-          {/*     )} */}
-          {/**/}
-          {/*     {detailsCard.button && ( */}
-          {/*       <motion.div */}
-          {/*         ref={(el) => (contentRefs.current[2] = el)} */}
-          {/*         data-index={2} */}
-          {/*         className={`content-section info-content-section info-content-last-section ${ */}
-          {/*           isVisible(2) ? "visible" : "" */}
-          {/*         }`} */}
-          {/*         style={{ */}
-          {/*           textAlign: "center", */}
-          {/*           backgroundColor: "transparent", */}
-          {/*           paddingTop: "3em", */}
-          {/*           borderBottom: "4px solid transparent", */}
-          {/*         }} */}
-          {/*         initial="hidden" */}
-          {/*         animate={isVisible(2) ? "visible" : "hidden"} */}
-          {/*         variants={fadeUp} */}
-          {/*       > */}
-          {/*         <motion.button */}
-          {/*           className="cta-button" */}
-          {/*           onClick={() => setOpenModal(true)} */}
-          {/*           whileHover={{ */}
-          {/*             y: -3, */}
-          {/*             boxShadow: "0 10px 25px rgba(102, 126, 234, 0.4)", */}
-          {/*           }} */}
-          {/*           whileTap={{ scale: 0.98 }} */}
-          {/*         > */}
-          {/*           {detailsCard.buttonText || "Learn More"} */}
-          {/*         </motion.button> */}
-          {/**/}
-          {/*         <FigmaEmbedModal */}
-          {/*           open={openModal} */}
-          {/*           onClose={() => setOpenModal(false)} */}
-          {/*         /> */}
-          {/*       </motion.div> */}
-          {/*     )} */}
-          {/*   </section> */}
-          {/**/}
-          {/*   <div style={{ padding: "30px" }}> */}
-          {/*     <DownArrow color="red" space="0" /> */}
-          {/*   </div> */}
         </div>
       </div>
 
@@ -617,7 +502,7 @@ const StackPair = ({
       <SideModal
         isOpen={imageModalOpen}
         onClose={() => setImageModalOpen(false)}
-        title={selectedPair?.[0]?.title || "Project Preview"}
+        title={`${previewCard.title} - Project ${projectNumber}`}
       >
         <SideModalNeatAltStack
           pair={selectedPair}

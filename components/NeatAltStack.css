@@ -1,20 +1,21 @@
 .stack-cards {
-  --stack-cards-gap: 50px;
+  --stack-cards-gap: 0 50px 50px 50px;
   position: relative;
   width: 100%;
   max-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-
   overflow: visible;
 }
+
 h1,
 h2,
 h3,
 h4 {
   text-align: center;
 }
+
 .height-100\% {
   height: 100%;
 }
@@ -30,9 +31,11 @@ h4 {
 .object-cover {
   object-fit: cover;
 }
+
 p {
   margin: 0.5em 0;
 }
+
 .stack-cards__item {
   position: sticky !important;
   width: 90%;

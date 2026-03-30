@@ -155,7 +155,6 @@ export default function Navbar() {
                   <span className="menu-dot" />
                   Home
                 </Link>
-
                 <Link
                   href="/about"
                   className="menu-item-link"
@@ -164,16 +163,30 @@ export default function Navbar() {
                   <span className="menu-dot" />
                   About
                 </Link>
-
                 <Link
-                  href="/projects"
+                  href="/web-apps"
                   className="menu-item-link"
                   onClick={closeMenu}
                 >
                   <span className="menu-dot" />
-                  Projects
+                  Web Apps
                 </Link>
-
+                <Link
+                  href="/web-games"
+                  className="menu-item-link"
+                  onClick={closeMenu}
+                >
+                  <span className="menu-dot" />
+                  Web Games
+                </Link>{" "}
+                <Link
+                  href="/mobile-apps"
+                  className="menu-item-link"
+                  onClick={closeMenu}
+                >
+                  <span className="menu-dot" />
+                  Mobile Apps
+                </Link>
                 <a
                   href="#contact"
                   className="menu-item-link"
