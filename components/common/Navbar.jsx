@@ -67,7 +67,8 @@ export default function Navbar() {
       <header className="navbar">
         <div className="container">
           <div className="navbar-content">
-            <Link href="/" className="brand" onClick={closeMenu}>
+            {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
+            <a href="/" className="brand" onClick={closeMenu}>
               <Logo
                 size="medium"
                 scale={0.6}
@@ -88,7 +89,7 @@ export default function Navbar() {
                 <span className="brand-text1 lemon-font">Lindocode</span>
                 <span className="brand-text2 lemon-font">Digital</span>
               </div>
-            </Link>
+            </a>
 
             <div ref={menuWrapRef} className="navbar-menu-wrap">
               <button
@@ -152,27 +153,40 @@ export default function Navbar() {
               <div className="menu-items lemon-font">
                 <Link href="/" className="menu-item-link" onClick={closeMenu}>
                   <span className="menu-dot" />
-                  Home
+                  All Projects
                 </Link>
-
+                {/* <Link */}
+                {/*   href="/about" */}
+                {/*   className="menu-item-link" */}
+                {/*   onClick={closeMenu} */}
+                {/* > */}
+                {/*   <span className="menu-dot" /> */}
+                {/*   About */}
+                {/* </Link> */}
                 <Link
-                  href="/about"
+                  href="/web-apps"
                   className="menu-item-link"
                   onClick={closeMenu}
                 >
                   <span className="menu-dot" />
-                  About
+                  Web Apps
                 </Link>
-
                 <Link
-                  href="/projects"
+                  href="/web-games"
                   className="menu-item-link"
                   onClick={closeMenu}
                 >
                   <span className="menu-dot" />
-                  Projects
+                  Web Games
+                </Link>{" "}
+                <Link
+                  href="/mobile-apps"
+                  className="menu-item-link"
+                  onClick={closeMenu}
+                >
+                  <span className="menu-dot" />
+                  Mobile Apps
                 </Link>
-
                 <a
                   href="#contact"
                   className="menu-item-link"
