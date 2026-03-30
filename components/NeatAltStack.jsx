@@ -8,463 +8,7 @@ import FigmaEmbedModal from "./FigmaEmbedModal";
 import "./NeatAltStack.css";
 import technologyIcons from "@/data/lazy_appz.json";
 import SideModal from "./common/SideModal.jsx";
-
-const fadeUp = {
-  hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
-};
-
-const staggerContainer = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1 },
-  },
-};
-
-const statItemVar = {
-  hidden: { opacity: 0, scale: 0.9, y: 20 },
-  visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.4 } },
-};
-
-const statsStagger = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.08 },
-  },
-};
-
-const techItemVar = {
-  hidden: { opacity: 0, scale: 0.9, y: 12 },
-  visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.35 } },
-};
-
-const mockupVariants = [
-  {
-    hidden: { opacity: 0, y: 18 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.55 } },
-  },
-  {
-    hidden: { opacity: 0, scale: 0.965 },
-    visible: { opacity: 1, scale: 1, transition: { duration: 0.55 } },
-  },
-  {
-    hidden: { opacity: 0, rotate: -1.4, y: 10 },
-    visible: { opacity: 1, rotate: 0, y: 0, transition: { duration: 0.6 } },
-  },
-];
-
-/**
- * Separate modal-only stack renderer
- * Shows the related preview + details cards for the clicked preview image
- */
-const SideModalNeatAltStack = ({
-  pair,
-  multipleMockupWidth = 100,
-  isMobile = false,
-}) => {
-  if (!pair || pair.length < 2) return null;
-
-  const [previewCard, detailsCard] = pair;
-
-  const techList =
-    technologyIcons.find((group) => group[detailsCard.iconKey])?.[
-      detailsCard.iconKey
-    ] || [];
-
-  return (
-    <div
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "1.5rem",
-      }}
-    >
-      {/* Preview Card */}
-      <motion.div
-        initial={{ opacity: 0, y: 18 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.35 }}
-        style={{
-          background: "#fff",
-          borderRadius: "20px",
-          overflow: "hidden",
-          boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
-          border: "1px solid #eee",
-        }}
-      >
-        <div
-          style={{
-            padding: "1rem 1rem 0 1rem",
-          }}
-        >
-          <span
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.4rem",
-              padding: "0.35rem 0.7rem",
-              borderRadius: "999px",
-              fontSize: "0.8rem",
-              fontWeight: 600,
-              background: previewCard.statusColor || "#111",
-              color: "#fff",
-            }}
-          >
-            {previewCard.statusText}
-          </span>
-        </div>
-
-        <div
-          style={{
-            display: "grid",
-            gridTemplateColumns: isMobile ? "1fr" : "1fr 1fr",
-            gap: "1.25rem",
-            padding: "1rem",
-            alignItems: "center",
-          }}
-        >
-          <div>
-            <h2
-              style={{
-                margin: "0 0 0.5rem",
-                fontSize: "1.6rem",
-                color: "#222",
-              }}
-            >
-              {previewCard.title}
-            </h2>
-
-            {previewCard.subtitle && (
-              <h4
-                style={{
-                  margin: "0 0 0.75rem",
-                  color: "#7B776E",
-                  fontWeight: 600,
-                }}
-              >
-                {previewCard.subtitle}
-              </h4>
-            )}
-
-            {previewCard.description && (
-              <p style={{ color: "#555", lineHeight: 1.7 }}>
-                {previewCard.description}
-              </p>
-            )}
-
-            {previewCard.details && (
-              <p style={{ color: "#666", lineHeight: 1.7 }}>
-                {previewCard.details}
-              </p>
-            )}
-
-            {previewCard.githubLink && (
-              <a
-                href={previewCard.githubLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  display: "inline-block",
-                  marginTop: "1rem",
-                  color: "#111",
-                  fontWeight: 600,
-                  textDecoration: "none",
-                }}
-              >
-                View GitHub →
-              </a>
-            )}
-          </div>
-
-          <div>
-            <Image
-              src={previewCard.image}
-              alt={previewCard.title}
-              width={700}
-              height={500}
-              style={{
-                width: "100%",
-                height: "auto",
-                borderRadius: "16px",
-                objectFit: "cover",
-                border: "1px solid #eee",
-              }}
-            />
-          </div>
-        </div>
-      </motion.div>
-
-      {/* Details Card */}
-      <motion.div
-        initial={{ opacity: 0, y: 18 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.4, delay: 0.05 }}
-        style={{
-          background: "#fff",
-          borderRadius: "20px",
-          overflow: "hidden",
-          boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
-          border: "1px solid #eee",
-          padding: "1.25rem",
-        }}
-      >
-        <div style={{ marginBottom: "1rem" }}>
-          <span
-            style={{
-              display: "inline-flex",
-              alignItems: "center",
-              gap: "0.4rem",
-              padding: "0.35rem 0.7rem",
-              borderRadius: "999px",
-              fontSize: "0.8rem",
-              fontWeight: 600,
-              background: detailsCard.statusColor || "#222",
-              color: "#fff",
-            }}
-          >
-            {detailsCard.statusText}
-          </span>
-        </div>
-
-        {/* Metrics */}
-        {detailsCard.stats?.length > 0 && (
-          <section style={{ marginBottom: "2rem" }}>
-            <h3
-              style={{
-                marginBottom: "1rem",
-                fontSize: "1.25rem",
-                color: "#222",
-              }}
-            >
-              Key Metrics
-            </h3>
-
-            <motion.div
-              style={{
-                display: "grid",
-                gridTemplateColumns: "repeat(auto-fit, minmax(140px, 1fr))",
-                gap: "1rem",
-              }}
-              variants={staggerContainer}
-              initial="hidden"
-              animate="visible"
-            >
-              {detailsCard.stats.map((stat, index) => (
-                <motion.div
-                  key={index}
-                  variants={statItemVar}
-                  style={{
-                    background: "#f9fafb",
-                    border: "1px solid #ececec",
-                    borderRadius: "16px",
-                    padding: "1rem",
-                  }}
-                >
-                  <div
-                    style={{
-                      fontSize: "1.6rem",
-                      fontWeight: "700",
-                      color: "#111",
-                    }}
-                  >
-                    {stat.value}
-                  </div>
-                  <div
-                    style={{
-                      fontSize: "0.9rem",
-                      color: "#666",
-                      marginTop: "0.25rem",
-                    }}
-                  >
-                    {stat.label}
-                  </div>
-                </motion.div>
-              ))}
-            </motion.div>
-          </section>
-        )}
-
-        {/* Tech */}
-        {techList.length > 0 && (
-          <section style={{ marginBottom: "2rem" }}>
-            <h3
-              style={{
-                marginBottom: "1rem",
-                fontSize: "1.25rem",
-                color: "#222",
-              }}
-            >
-              Technologies
-            </h3>
-
-            <motion.div
-              style={{
-                display: "flex",
-                flexWrap: "wrap",
-                gap: "1rem",
-              }}
-              variants={statsStagger}
-              initial="hidden"
-              animate="visible"
-            >
-              {techList.map((tech) => (
-                <motion.a
-                  key={tech.id}
-                  href={tech.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  variants={techItemVar}
-                  style={{
-                    display: "flex",
-                    alignItems: "center",
-                    gap: "0.6rem",
-                    textDecoration: "none",
-                    color: tech.color,
-                    fontWeight: 500,
-                    padding: "0.75rem 1rem",
-                    borderRadius: "14px",
-                    background: "#fafafa",
-                    border: "1px solid #eee",
-                  }}
-                >
-                  {tech.path && (
-                    <svg
-                      width="22"
-                      height="22"
-                      viewBox="0 0 24 24"
-                      fill="currentColor"
-                    >
-                      <path d={tech.path} />
-                    </svg>
-                  )}
-                  {tech.name && <span>{tech.name}</span>}
-                </motion.a>
-              ))}
-            </motion.div>
-          </section>
-        )}
-
-        {/* Mockups */}
-        {detailsCard.mockupImages?.length > 0 && (
-          <section style={{ marginBottom: "2rem" }}>
-            <h3
-              style={{
-                marginBottom: "1rem",
-                fontSize: "1.25rem",
-                color: "#222",
-              }}
-            >
-              Interface Mockups
-            </h3>
-
-            <motion.div
-              style={{
-                display: "grid",
-                gridTemplateColumns: isMobile
-                  ? "1fr"
-                  : "repeat(auto-fit, minmax(240px, 1fr))",
-                gap: "1rem",
-              }}
-              variants={staggerContainer}
-              initial="hidden"
-              animate="visible"
-            >
-              {detailsCard.mockupImages.map((mockup, idx) => {
-                const variant = mockupVariants[idx % mockupVariants.length];
-
-                return (
-                  <motion.div
-                    key={idx}
-                    variants={variant}
-                    whileHover={{ y: -4 }}
-                    style={{
-                      background: "#fafafa",
-                      borderRadius: "16px",
-                      overflow: "hidden",
-                      border: "1px solid #eee",
-                    }}
-                  >
-                    <Image
-                      src={mockup.src}
-                      alt={mockup.alt}
-                      width={500}
-                      height={350}
-                      style={{
-                        width: `${multipleMockupWidth}%`,
-                        height: "auto",
-                        objectFit: "cover",
-                        display: "block",
-                      }}
-                    />
-                    <div
-                      style={{
-                        padding: "0.9rem 1rem",
-                        fontSize: "0.9rem",
-                        color: "#555",
-                        fontWeight: 500,
-                      }}
-                    >
-                      {mockup.caption}
-                    </div>
-                  </motion.div>
-                );
-              })}
-            </motion.div>
-          </section>
-        )}
-
-        {/* CTA */}
-        {(detailsCard.link || detailsCard.button) && (
-          <section style={{ textAlign: "center", marginTop: "1rem" }}>
-            {detailsCard.link && (
-              <a
-                href={detailsCard.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  padding: "0.9rem 1.4rem",
-                  borderRadius: "999px",
-                  background: "#111",
-                  color: "#fff",
-                  textDecoration: "none",
-                  fontWeight: 600,
-                }}
-              >
-                Visit Live Site
-              </a>
-            )}
-
-            {detailsCard.button && (
-              <button
-                type="button"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  justifyContent: "center",
-                  padding: "0.9rem 1.4rem",
-                  borderRadius: "999px",
-                  background: "#111",
-                  color: "#fff",
-                  textDecoration: "none",
-                  fontWeight: 600,
-                  border: "none",
-                  cursor: "pointer",
-                }}
-              >
-                {detailsCard.buttonText || "Learn More"}
-              </button>
-            )}
-          </section>
-        )}
-      </motion.div>
-    </div>
-  );
-};
+import SideModalNeatAltStack from "./SideModalNeatAltStack";
 
 const StackPair = ({
   pair,
@@ -480,9 +24,9 @@ const StackPair = ({
   const [isMobile, setIsMobile] = useState(false);
   const [isExtraLg, setIsExtraLg] = useState(false);
 
-  // New modal state for clicked preview card
   const [selectedPair, setSelectedPair] = useState(null);
   const [imageModalOpen, setImageModalOpen] = useState(false);
+  const [modalFigmaOpen, setModalFigmaOpen] = useState(false);
 
   const [previewCard, detailsCard] = pair;
 
@@ -494,7 +38,6 @@ const StackPair = ({
 
     checkResponsive();
     window.addEventListener("resize", checkResponsive);
-
     return () => window.removeEventListener("resize", checkResponsive);
   }, []);
 
@@ -604,12 +147,10 @@ const StackPair = ({
 
     observer.observe(container);
 
-    const resizeHandler = () => {
+    container.addEventListener("resize-stack-cards", () => {
       setStackCards();
       animateStackCards();
-    };
-
-    container.addEventListener("resize-stack-cards", resizeHandler);
+    });
 
     const handleResize = () => {
       clearTimeout(resizeTimeout);
@@ -624,7 +165,6 @@ const StackPair = ({
 
     return () => {
       observer.disconnect();
-      container.removeEventListener("resize-stack-cards", resizeHandler);
       window.removeEventListener("resize", handleResize);
       if (scrollingFn) window.removeEventListener("scroll", scrollingFn);
     };
@@ -655,6 +195,52 @@ const StackPair = ({
   }, []);
 
   const isVisible = (index) => visibleContents.includes(index);
+
+  const fadeUp = {
+    hidden: { opacity: 0, y: 30 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } },
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1 },
+    },
+  };
+
+  const statItemVar = {
+    hidden: { opacity: 0, scale: 0.9, y: 20 },
+    visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.4 } },
+  };
+
+  const statsStagger = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.08 },
+    },
+  };
+
+  const techItemVar = {
+    hidden: { opacity: 0, scale: 0.9, y: 12 },
+    visible: { opacity: 1, scale: 1, y: 0, transition: { duration: 0.35 } },
+  };
+
+  const mockupVariants = [
+    {
+      hidden: { opacity: 0, y: 18 },
+      visible: { opacity: 1, y: 0, transition: { duration: 0.55 } },
+    },
+    {
+      hidden: { opacity: 0, scale: 0.965 },
+      visible: { opacity: 1, scale: 1, transition: { duration: 0.55 } },
+    },
+    {
+      hidden: { opacity: 0, rotate: -1.4, y: 10 },
+      visible: { opacity: 1, rotate: 0, y: 0, transition: { duration: 0.6 } },
+    },
+  ];
 
   const handlePreviewImageClick = () => {
     setSelectedPair(pair);
@@ -880,7 +466,7 @@ const StackPair = ({
             <motion.div
               ref={(el) => (contentRefs.current[1] = el)}
               data-index={1}
-              className={`content-section ${isVisible(1) ? "visible" : " "} mockups`}
+              className={`content-section ${isVisible(1) ? "visible" : ""} mockups`}
               style={{
                 width: "100%",
                 padding: isMobile ? "30px" : "50px",
@@ -905,7 +491,6 @@ const StackPair = ({
               >
                 {detailsCard.mockupImages?.map((mockup, idx) => {
                   const v = mockupVariants[idx % mockupVariants.length];
-
                   return (
                     <motion.div
                       key={idx}
@@ -1014,16 +599,22 @@ const StackPair = ({
         </div>
       </div>
 
-      {/* Side modal with separate modal stack */}
       <SideModal
         isOpen={imageModalOpen}
         onClose={() => setImageModalOpen(false)}
         title={selectedPair?.[0]?.title || "Project Preview"}
       >
-        <SideModalNeatAltStack
-          pair={selectedPair}
-          multipleMockupWidth={100}
-          isMobile={isMobile}
+        {selectedPair && (
+          <SideModalNeatAltStack
+            cards={[selectedPair]}
+            multipleMockupWidth={multipleMockupWidth}
+            onOpenFigma={() => setModalFigmaOpen(true)}
+          />
+        )}
+
+        <FigmaEmbedModal
+          open={modalFigmaOpen}
+          onClose={() => setModalFigmaOpen(false)}
         />
       </SideModal>
     </>

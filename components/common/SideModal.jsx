@@ -18,7 +18,6 @@ export default function SideModal({ isOpen, onClose, children, title }) {
     };
 
     document.addEventListener("keydown", handleEscape);
-
     return () => {
       document.removeEventListener("keydown", handleEscape);
       document.body.style.overflow = "";
@@ -60,35 +59,36 @@ export default function SideModal({ isOpen, onClose, children, title }) {
               top: 0,
               right: 0,
               width: "90%",
-              maxWidth: "720px",
+              maxWidth: "820px",
               height: "100vh",
-              backgroundColor: "#fff",
+              backgroundColor: "white",
               boxShadow: "-5px 0 25px rgba(0, 0, 0, 0.15)",
               zIndex: 1001,
-              overflow: "hidden",
+              overflowY: "auto",
+              overflowX: "hidden",
               display: "flex",
               flexDirection: "column",
             }}
           >
             <div
               style={{
-                padding: "1.25rem 1.5rem",
+                padding: "1.5rem",
                 borderBottom: "1px solid #e5e7eb",
                 display: "flex",
                 justifyContent: "space-between",
                 alignItems: "center",
                 position: "sticky",
                 top: 0,
-                backgroundColor: "#fff",
-                zIndex: 10,
+                backgroundColor: "white",
+                zIndex: 20,
               }}
             >
               <h2
                 style={{
-                  fontSize: "1.25rem",
-                  fontWeight: "700",
+                  fontSize: "1.5rem",
+                  fontWeight: "bold",
                   margin: 0,
-                  color: "#222",
+                  color: "#333",
                 }}
               >
                 {title}
@@ -96,7 +96,6 @@ export default function SideModal({ isOpen, onClose, children, title }) {
 
               <button
                 onClick={onClose}
-                aria-label="Close modal"
                 style={{
                   background: "none",
                   border: "none",
@@ -138,9 +137,8 @@ export default function SideModal({ isOpen, onClose, children, title }) {
             <div
               style={{
                 flex: 1,
-                overflowY: "auto",
+                overflowY: "visible",
                 padding: "1.5rem",
-                background: "#fafafa",
               }}
             >
               {children}
