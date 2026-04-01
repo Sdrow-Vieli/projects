@@ -11,12 +11,28 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isAnimating, setIsAnimating] = useState(false);
   const [menuVisible, setMenuVisible] = useState(false);
+  const [showLogo, setShowLogo] = useState(true);
 
   const pathname = usePathname();
   const menuWrapRef = useRef(null);
   const menuContentRef = useRef(null);
 
   const isActive = (path) => pathname === path;
+
+  useEffect(() => {
+    const hideAt = 120; // adjust this threshold as needed
+
+    const handleScroll = () => {
+      setShowLogo(window.scrollY <= hideAt);
+    };
+
+    handleScroll();
+    window.addEventListener("scroll", handleScroll, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   useEffect(() => {
     if (mobileMenuOpen) {
@@ -68,7 +84,11 @@ export default function Navbar() {
         <div className="container">
           <div className="navbar-content">
             {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
-            <a href="/" className="brand" onClick={closeMenu}>
+            <a
+              href="/"
+              className={`brand ${showLogo ? "brand-visible" : "brand-hidden"}`}
+              onClick={closeMenu}
+            >
               <Logo
                 size="medium"
                 scale={0.6}
@@ -109,30 +129,6 @@ export default function Navbar() {
                 </span>
               </button>
             </div>
-
-            {/* <nav className="navbar-nav desktop-nav"> */}
-            {/*   <Link */}
-            {/*     href="/" */}
-            {/*     className={`nav-link ${isActive("/") ? "active" : ""}`} */}
-            {/*   > */}
-            {/*     Home */}
-            {/*   </Link> */}
-            {/*   <Link */}
-            {/*     href="/about" */}
-            {/*     className={`nav-link ${isActive("/about") ? "active" : ""}`} */}
-            {/*   > */}
-            {/*     About */}
-            {/*   </Link> */}
-            {/*   <Link */}
-            {/*     href="/projects" */}
-            {/*     className={`nav-link ${isActive("/projects") ? "active" : ""}`} */}
-            {/*   > */}
-            {/*     Projects */}
-            {/*   </Link> */}
-            {/*   <a href="#contact" className="nav-link"> */}
-            {/*     Contact */}
-            {/*   </a> */}
-            {/* </nav> */}
           </div>
         </div>
       </header>
@@ -159,14 +155,7 @@ export default function Navbar() {
                   <span className="menu-dot" />
                   All Projects
                 </Link>
-                {/* <Link */}
-                {/*   href="/about" */}
-                {/*   className="menu-item-link" */}
-                {/*   onClick={closeMenu} */}
-                {/* > */}
-                {/*   <span className="menu-dot" /> */}
-                {/*   About */}
-                {/* </Link> */}
+
                 <Link
                   href="/web-apps"
                   className={`menu-item-link ${isActive("/web-apps") ? "active" : ""}`}
@@ -182,7 +171,7 @@ export default function Navbar() {
                 >
                   <span className="menu-dot" />
                   Web Games
-                </Link>{" "}
+                </Link>
                 <Link
                   href="/mobile-apps"
                   className={`menu-item-link ${isActive("/mobile-apps") ? "active" : ""}`}
