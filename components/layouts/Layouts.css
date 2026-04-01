@@ -9,7 +9,7 @@
 .full-width-layout {
   --persistent-side-modal-width: 35%;
   --persistent-side-modal-gap: 28px;
-  --persistent-side-modal-top: 24px;
+  --persistent-side-modal-top: 100px;
   --persistent-side-modal-bottom: 24px;
 }
 .desktop {
