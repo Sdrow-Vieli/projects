@@ -288,12 +288,13 @@
 /* Connect panel */
 .connect-panel {
   padding: 30px;
-  background: #fafafa;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
   border-radius: 20px;
   width: 100%;
   max-width: 450px;
   position: relative;
-  border: 1px solid rgba(0, 0, 0, 0.03);
+  border: 5px solid rgba(0, 0, 0, 0.03);
 }
 
 .connect-panel::before {
@@ -303,8 +304,8 @@
   left: 10px;
   width: 20px;
   height: 20px;
-  border-top: 1px solid rgba(252, 20, 20, 0.1);
-  border-left: 1px solid rgba(252, 20, 20, 0.1);
+  border-top: 1px solid rgba(252, 20, 20, 0.6);
+  border-left: 1px solid rgba(252, 20, 20, 0.6);
 }
 
 .connect-panel::after {
@@ -314,8 +315,8 @@
   right: 10px;
   width: 20px;
   height: 20px;
-  border-bottom: 1px solid rgba(252, 20, 20, 0.1);
-  border-right: 1px solid rgba(252, 20, 20, 0.1);
+  border-bottom: 1px solid rgba(252, 20, 20, 0.6);
+  border-right: 1px solid rgba(252, 20, 20, 0.6);
 }
 
 .connect-title {
