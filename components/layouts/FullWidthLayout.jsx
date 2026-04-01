@@ -10,7 +10,7 @@ import SideModalNeatAltStack from "../SideModalNeatAltStack.jsx";
 import Sidebar from "../common/Sidebar";
 import "./Layouts.css";
 
-const PERSISTENT_MODAL_BREAKPOINT = 1500;
+const PERSISTENT_MODAL_BREAKPOINT = 1200;
 
 export default function FullWidthLayout({ children, showHero = true }) {
   const [isWideScreen, setIsWideScreen] = useState(false);

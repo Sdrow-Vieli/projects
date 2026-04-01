@@ -6,7 +6,7 @@ import "./NeatAltStack.css";
 import SideModal from "./common/SideModal.jsx";
 import SideModalNeatAltStack from "./SideModalNeatAltStack.jsx";
 
-const PERSISTENT_MODAL_BREAKPOINT = 1500;
+const PERSISTENT_MODAL_BREAKPOINT = 1200;
 
 const chunkArray = (array = [], size = 3) => {
   if (!Array.isArray(array) || size <= 0) return [];
@@ -145,8 +145,10 @@ const PreviewCard = ({
                   transform:
                     previewCard?.imgTransform ||
                     (isExtraLg
-                      ? "rotate(6deg) scale(1)" : isMobile ? "rotate(6deg) scale(.8)"
-                      : "rotate(6deg) scale(.9)"),
+                      ? "rotate(6deg) scale(1)"
+                      : isMobile
+                        ? "rotate(6deg) scale(.8)"
+                        : "rotate(6deg) scale(.9)"),
                   transition: "transform 0.45s ease",
                   cursor: "pointer",
                 }}

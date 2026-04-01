@@ -2,24 +2,44 @@
 
 import FullWidthLayout from "@/components/layouts/FullWidthLayout";
 import NeatAltStack from "@/components/NeatAltStack";
+import NeatAltStackGrouped from "@/components/NeatStack";
 import cardsData from "@/data/projects.json";
 
 export default function Projects() {
   return (
     <FullWidthLayout showHero={false}>
-      <h1
-        className="lemon-font"
-        style={{
-          color: "#444444",
-        }}
-      >
-        Web Games
-      </h1>{" "}
-      <NeatAltStack
-        cards={cardsData.webGames}
-        multipleMockupWidth={100}
-        stickyStartPosition={100}
-      />
+      <div className="others">
+        <h1
+          className="lemon-font"
+          style={{
+            color: "#444444",
+            marginBottom: "1em",
+          }}
+        >
+          Web Games
+        </h1>{" "}
+        <NeatAltStackGrouped
+          cards={cardsData.webGames}
+          multipleMockupWidth={100}
+          stickyStartPosition={100}
+        />
+      </div>{" "}
+      <div className="desktop">
+        <h1
+          className="lemon-font"
+          style={{
+            color: "#444444",
+            marginBottom: "1em",
+          }}
+        >
+          Web Games
+        </h1>{" "}
+        <NeatAltStack
+          cards={cardsData.webGames}
+          multipleMockupWidth={100}
+          stickyStartPosition={100}
+        />
+      </div>
     </FullWidthLayout>
   );
 }

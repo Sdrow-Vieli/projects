@@ -32,10 +32,10 @@ export default function Projects() {
             marginBottom: "1em",
           }}
         >
-          Web Games
+          Web Applications
         </h1>{" "}
         <NeatAltStack
-          cards={cardsData.webGames}
+          cards={cardsData.webApps}
           multipleMockupWidth={100}
           stickyStartPosition={100}
         />

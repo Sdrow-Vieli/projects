@@ -7,7 +7,7 @@
 }
 
 .full-width-layout {
-  --persistent-side-modal-width: 720px;
+  --persistent-side-modal-width: 35%;
   --persistent-side-modal-gap: 28px;
   --persistent-side-modal-top: 24px;
   --persistent-side-modal-bottom: 24px;
@@ -85,7 +85,7 @@
 }
 
 /* ---------- Persistent sidebar layout ---------- */
-@media (min-width: 1501px) {
+@media (min-width: 1201px) {
   .main-full-width-shell.with-persistent-side-modal {
     display: grid;
     grid-template-columns: minmax(0, 1fr) var(--persistent-side-modal-width);
@@ -252,7 +252,7 @@
   }
 }
 
-@media (min-width: 1501px) {
+@media (min-width: 1201px) {
   .main-full-width-sidebar {
     margin-right: -24px;
   }
