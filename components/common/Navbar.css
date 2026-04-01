@@ -488,3 +488,10 @@
   pointer-events: none;
   transform: translateY(-8px);
 }
+
+body.side-modal-open .navbar .brand {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-8px);
+}
