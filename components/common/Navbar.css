@@ -226,6 +226,14 @@
   transition: height 0.2s ease;
 }
 
+.menu-item-link.active {
+  font-weight: 600;
+}
+.menu-item-link.active::before {
+  height: 70%;
+  background: green;
+  opacity: 0.5;
+}
 .menu-item-link:hover::before {
   height: 70%;
 }
@@ -262,7 +270,11 @@
   transition: all 0.2s ease;
   opacity: 0.5;
 }
-
+.menu-item-link.active .menu-dot {
+  opacity: 1;
+  transform: scale(1.2);
+  background: green;
+}
 .menu-item-link:hover .menu-dot {
   opacity: 1;
   transform: scale(1.2);

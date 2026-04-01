@@ -151,7 +151,11 @@ export default function Navbar() {
             <ChipBackground />
             <div className="menu-inner">
               <div className="menu-items lemon-font">
-                <Link href="/" className="menu-item-link" onClick={closeMenu}>
+                <Link
+                  href="/"
+                  className={`menu-item-link ${isActive("/") ? "active" : ""}`}
+                  onClick={closeMenu}
+                >
                   <span className="menu-dot" />
                   All Projects
                 </Link>
@@ -165,7 +169,7 @@ export default function Navbar() {
                 {/* </Link> */}
                 <Link
                   href="/web-apps"
-                  className="menu-item-link"
+                  className={`menu-item-link ${isActive("/web-apps") ? "active" : ""}`}
                   onClick={closeMenu}
                 >
                   <span className="menu-dot" />
@@ -173,7 +177,7 @@ export default function Navbar() {
                 </Link>
                 <Link
                   href="/web-games"
-                  className="menu-item-link"
+                  className={`menu-item-link ${isActive("/web-games") ? "active" : ""}`}
                   onClick={closeMenu}
                 >
                   <span className="menu-dot" />
@@ -181,7 +185,7 @@ export default function Navbar() {
                 </Link>{" "}
                 <Link
                   href="/mobile-apps"
-                  className="menu-item-link"
+                  className={`menu-item-link ${isActive("/mobile-apps") ? "active" : ""}`}
                   onClick={closeMenu}
                 >
                   <span className="menu-dot" />
@@ -189,7 +193,7 @@ export default function Navbar() {
                 </Link>
                 <a
                   href="#contact"
-                  className="menu-item-link"
+                  className={`menu-item-link ${isActive(`${pathname}#contact`) ? "active" : ""}`}
                   onClick={closeMenu}
                 >
                   <span className="menu-dot" />

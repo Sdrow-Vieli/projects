@@ -53,8 +53,8 @@ p {
   min-width: 100% !important;
   margin: 0 0 var(--stack-cards-gap) 0 !important;
   text-align: center;
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.7) !important;
-  border-radius: 0 0 5em 5em;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.55) !important;
+  border-radius: 0 0 2em 2em;
   background: #f8e7e3;
 }
 
@@ -135,6 +135,7 @@ p {
     linear-gradient(180deg, #bcd7db 0%, #d7d6d1 45%, #f2a07c 100%);
   overflow: hidden;
   justify-content: center;
+  border-radius: 0 8px 8px 0;
 }
 
 .card-image {
@@ -475,4 +476,20 @@ p {
   border-color: #ffd700;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+}
+
+/*===========CSS additions/overrides for true max-3 stacking:===========*/
+
+.stack-cards {
+  --stack-cards-gap: 50px;
+}
+
+.stack-group-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 8rem;
+}
+
+.stack-group-wrapper:last-child {
+  margin-bottom: 0;
 }

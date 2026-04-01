@@ -3,6 +3,7 @@
 import FullWidthLayout from "@/components/layouts/FullWidthLayout";
 import NeatAltStack from "@/components/NeatAltStack";
 import cardsData from "@/data/projects.json";
+import NeatAltStackGrouped from "@/components/NeatStack";
 
 export default function Home() {
   return (
@@ -13,26 +14,28 @@ export default function Home() {
           className="lemon-font"
           style={{
             color: "#444444",
+            marginBottom: "1em",
           }}
         >
           Web Applications
         </h1>{" "}
-        <NeatAltStack
+        <NeatAltStackGrouped
           cards={cardsData.webApps}
           multipleMockupWidth={100}
           stickyStartPosition={100}
         />
-      </div>
+      </div>{" "}
       <div>
         <h1
           className="lemon-font"
           style={{
             color: "#444444",
+            marginBottom: "1em",
           }}
         >
           Web Games
         </h1>{" "}
-        <NeatAltStack
+        <NeatAltStackGrouped
           cards={cardsData.webGames}
           multipleMockupWidth={100}
           stickyStartPosition={100}

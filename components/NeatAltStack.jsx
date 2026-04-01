@@ -62,11 +62,9 @@ const StackPair = ({
     const styles = [
       {
         color: "#D4AF37", // gold
-        gradient: "linear-gradient(135deg, #D4AF37, #FFD700)",
       },
       {
         color: "#111111", // near black
-        gradient: "linear-gradient(135deg, #000000, #434343)",
       },
     ];
     return styles[index % styles.length];
@@ -262,10 +260,7 @@ const StackPair = ({
           <h2
             className="press-start-font project-number"
             style={{
-              background: projectStyle.gradient,
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-              color: "transparent",
+              color: projectStyle.color,
               margin: "1em",
             }}
           >
@@ -399,7 +394,7 @@ const StackPair = ({
                   className="h2-brush"
                   style={{ color: "#333", marginBottom: "20px" }}
                 >
-                  Key Metrics
+                  Metrics Summary
                 </h2>
 
                 <motion.div
@@ -492,14 +487,7 @@ const StackPair = ({
               onClick={handlePreviewImageClick}
               style={{ cursor: "pointer" }}
             >
-              View Details
-            </button>
-            <button
-              className="btn btn-secondary"
-              onClick={handlePreviewImageClick}
-              style={{ cursor: "pointer" }}
-            >
-              View Demo
+              View More
             </button>
           </div>
         </div>
