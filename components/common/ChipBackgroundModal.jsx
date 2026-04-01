@@ -10,14 +10,14 @@ export default function ChipBackground() {
       >
         <g className="pcb-frame">
           {/* TOP */}
-          {/* <path className="trace" d="M0 60 H180 L220 100 H340" /> */}
-          {/* <circle className="node" cx="340" cy="100" r="4" /> */}
+          <path className="trace" d="M0 60 H180 L220 100 H340" />
+          <circle className="node" cx="340" cy="100" r="4" />
 
           <path className="trace" d="M240 0 V60 L300 120 H420" />
           <circle className="node" cx="420" cy="120" r="4" />
 
-          {/* <path className="trace" d="M500 0 V80 L560 140 H680" /> */}
-          {/* <circle className="node" cx="680" cy="140" r="4" /> */}
+          <path className="trace" d="M500 0 V80 L560 140 H680" />
+          <circle className="node" cx="680" cy="140" r="4" />
 
           <path className="trace" d="M760 0 V70 L820 130 H940" />
           <circle className="node" cx="940" cy="130" r="4" />
