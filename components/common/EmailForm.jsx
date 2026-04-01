@@ -147,7 +147,7 @@ const EmailForm = ({ formspreeEndpoint }) => {
       <form
         onSubmit={handleSubmit}
         style={{
-          width: "60%",
+          width: isMobile ? "90%" : "50%",
           maxWidth: "650px",
           margin: isMobile ? "20px" : "30px auto",
           padding: isMobile ? "1rem" : "2rem",
