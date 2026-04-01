@@ -181,7 +181,7 @@ export default function Navbar() {
                   Mobile Apps
                 </Link>
                 <a
-                  href="#contact"
+                  href="#contact-form"
                   className={`menu-item-link ${isActive(`${pathname}#contact`) ? "active" : ""}`}
                   onClick={closeMenu}
                 >

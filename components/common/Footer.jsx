@@ -12,7 +12,7 @@ export default function Footer() {
   return (
     <>
       <br />
-      <div>
+      <div id="contact-form">
         {" "}
         <h2 className="lemon-font" style={{ color: "#444444" }}>
           Send Email
