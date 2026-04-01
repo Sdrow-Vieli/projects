@@ -476,3 +476,19 @@ p {
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
 }
+
+/*===========CSS additions/overrides for true max-3 stacking:===========*/
+
+.stack-cards {
+  --stack-cards-gap: 50px;
+}
+
+.stack-group-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 8rem;
+}
+
+.stack-group-wrapper:last-child {
+  margin-bottom: 0;
+}
