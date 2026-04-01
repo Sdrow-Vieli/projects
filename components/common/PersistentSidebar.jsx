@@ -8,7 +8,7 @@ export default function PersistentSideModal({
   onClear,
 }) {
   return (
-    <aside className="persistent-side-modal" aria-label={title}>
+    <div className="persistent-side-modal" aria-label={title}>
       <div className="persistent-side-modal__header">
         <a href="/" className="brand">
           <Logo
@@ -50,6 +50,6 @@ export default function PersistentSideModal({
       </div>
 
       <div className="persistent-side-modal__body">{children}</div>
-    </aside>
+    </div>
   );
 }
