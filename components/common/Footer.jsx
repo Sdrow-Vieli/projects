@@ -14,9 +14,9 @@ export default function Footer() {
       <br />
       <div id="contact-form">
         {" "}
-        <h2 className="lemon-font" style={{ color: "#444444" }}>
+        <h1 className="lemon-font" style={{ color: "#444444" }}>
           Send Email
-        </h2>
+        </h1>
         <EmailForm />
       </div>
       <br />
