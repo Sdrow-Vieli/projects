@@ -69,8 +69,8 @@ export default function SideModal({ isOpen, onClose, children, title }) {
               overflow: "hidden",
               display: "flex",
               flexDirection: "column",
-              borderLeft: "4px solid red",
-              borderRadius: "30px 0 0 30px",
+              borderLeft: "3.5px solid #C90201",
+              borderRadius: "20px 0 0 20px",
             }}
           >
             {" "}

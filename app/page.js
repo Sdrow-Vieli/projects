@@ -14,6 +14,7 @@ export default function Home() {
           className="lemon-font"
           style={{
             color: "#444444",
+            marginBottom: "1em",
           }}
         >
           Web Applications
@@ -29,6 +30,7 @@ export default function Home() {
           className="lemon-font"
           style={{
             color: "#444444",
+            marginBottom: "1em",
           }}
         >
           Web Games

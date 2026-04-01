@@ -145,8 +145,8 @@ const PreviewCard = ({
                   transform:
                     previewCard?.imgTransform ||
                     (isExtraLg
-                      ? "rotate(3.5deg) scale(.9)"
-                      : "rotate(3.5deg) scale(.8)"),
+                      ? "rotate(6deg) scale(1)" : isMobile ? "rotate(6deg) scale(.8)"
+                      : "rotate(6deg) scale(.9)"),
                   transition: "transform 0.45s ease",
                   cursor: "pointer",
                 }}
