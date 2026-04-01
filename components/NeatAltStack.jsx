@@ -62,11 +62,9 @@ const StackPair = ({
     const styles = [
       {
         color: "#D4AF37", // gold
-        gradient: "linear-gradient(135deg, #D4AF37, #FFD700)",
       },
       {
         color: "#111111", // near black
-        gradient: "linear-gradient(135deg, #000000, #434343)",
       },
     ];
     return styles[index % styles.length];
@@ -262,10 +260,7 @@ const StackPair = ({
           <h2
             className="press-start-font project-number"
             style={{
-              background: projectStyle.gradient,
-              WebkitBackgroundClip: "text",
-              backgroundClip: "text",
-              color: "transparent",
+              color: projectStyle.color,
               margin: "1em",
             }}
           >
