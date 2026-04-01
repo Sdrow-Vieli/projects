@@ -16,21 +16,6 @@ export default function Home() {
             color: "#444444",
           }}
         >
-          Web Applications
-        </h1>{" "}
-        <NeatAltStack
-          cards={cardsData.webApps}
-          multipleMockupWidth={100}
-          stickyStartPosition={100}
-        />
-      </div>
-      <div>
-        <h1
-          className="lemon-font"
-          style={{
-            color: "#444444",
-          }}
-        >
           Web Games
         </h1>{" "}
         <NeatAltStackGrouped

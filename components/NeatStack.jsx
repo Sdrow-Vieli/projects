@@ -6,6 +6,8 @@ import "./NeatAltStack.css";
 import SideModal from "./common/SideModal.jsx";
 import SideModalNeatAltStack from "./SideModalNeatAltStack.jsx";
 
+const PERSISTENT_MODAL_BREAKPOINT = 1500;
+
 const chunkArray = (array = [], size = 3) => {
   if (!Array.isArray(array) || size <= 0) return [];
 
@@ -44,6 +46,15 @@ const PreviewCard = ({
   }, []);
 
   const handlePreviewImageClick = () => {
+    if (window.innerWidth > PERSISTENT_MODAL_BREAKPOINT) {
+      window.dispatchEvent(
+        new CustomEvent("preview-card:selected", {
+          detail: { pair },
+        }),
+      );
+      return;
+    }
+
     setSelectedPair(pair);
     setImageModalOpen(true);
   };
@@ -174,7 +185,6 @@ const StackGroup = ({ group, groupIndex, stickyStartPosition, startIndex }) => {
     let elementHeight = 0;
     let cardTop = stickyStartPosition;
     let cardHeight = 0;
-    let windowHeight = window.innerHeight;
     let resizeTimeout;
 
     const setStackCards = () => {
@@ -191,7 +201,6 @@ const StackGroup = ({ group, groupIndex, stickyStartPosition, startIndex }) => {
       elementHeight = container.offsetHeight;
       cardTop = stickyStartPosition;
       cardHeight = items[0].offsetHeight;
-      windowHeight = window.innerHeight;
 
       container.style.paddingBottom = `${Math.max(marginY, 0) * Math.max(items.length - 1, 0)}px`;
 
@@ -316,6 +325,17 @@ const NeatAltStackGrouped = ({
   const groupedCards = useMemo(() => {
     return chunkArray(cards, normalizedStackLimit);
   }, [cards, normalizedStackLimit]);
+
+  useEffect(() => {
+    if (!cards.length) return;
+    if (window.innerWidth <= PERSISTENT_MODAL_BREAKPOINT) return;
+
+    window.dispatchEvent(
+      new CustomEvent("preview-card:selected", {
+        detail: { pair: cards[0] },
+      }),
+    );
+  }, [cards]);
 
   return (
     <>
