@@ -394,7 +394,7 @@ const StackPair = ({
                   className="h2-brush"
                   style={{ color: "#333", marginBottom: "20px" }}
                 >
-                  Key Metrics
+                  Metrics Summary
                 </h2>
 
                 <motion.div
@@ -487,14 +487,7 @@ const StackPair = ({
               onClick={handlePreviewImageClick}
               style={{ cursor: "pointer" }}
             >
-              View Details
-            </button>
-            <button
-              className="btn btn-secondary"
-              onClick={handlePreviewImageClick}
-              style={{ cursor: "pointer" }}
-            >
-              View Demo
+              View More
             </button>
           </div>
         </div>

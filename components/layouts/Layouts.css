@@ -12,7 +12,13 @@
   --persistent-side-modal-top: 24px;
   --persistent-side-modal-bottom: 24px;
 }
+.desktop {
+  display: block;
+}
 
+.others {
+  display: none;
+}
 .main {
   flex: 1;
   padding: 40px 0;
@@ -123,7 +129,7 @@
   border: 1px solid rgba(229, 231, 235, 0.9);
   border-top: 4px solid #c90201;
   border-left: 4px solid #c90201;
- border-bottom: 4px solid #c90201;
+  border-bottom: 4px solid #c90201;
 
   border-radius: 28px 0 0 28px;
   backdrop-filter: blur(10px);
@@ -245,8 +251,17 @@
     padding: 20px 0;
   }
 }
+
 @media (min-width: 1501px) {
   .main-full-width-sidebar {
-    margin-right: -24px; /* ← adjust this value until it's perfectly flush */
+    margin-right: -24px;
+  }
+
+  .desktop {
+    display: none;
+  }
+
+  .others {
+    display: block;
   }
 }
