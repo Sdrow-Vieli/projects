@@ -191,7 +191,7 @@ export default function Navbar() {
               </div>
 
               <div className="connect-panel">
-                <h2 className="connect-title">Let&apos;s Connect</h2>
+                <h2 className="connect-title lemon-font">Let&apos;s Connect</h2>
                 <p className="connect-text">
                   Have a project in mind? Let&apos;s bring your ideas to life.
                 </p>
