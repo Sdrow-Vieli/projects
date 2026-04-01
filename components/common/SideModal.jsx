@@ -10,8 +10,10 @@ export default function SideModal({ isOpen, onClose, children, title }) {
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
+      document.body.classList.add("side-modal-open");
     } else {
       document.body.style.overflow = "";
+      document.body.classList.remove("side-modal-open");
     }
 
     const handleEscape = (e) => {
@@ -23,9 +25,9 @@ export default function SideModal({ isOpen, onClose, children, title }) {
     return () => {
       document.removeEventListener("keydown", handleEscape);
       document.body.style.overflow = "";
+      document.body.classList.remove("side-modal-open");
     };
   }, [isOpen, onClose]);
-
   const handleBackdropClick = (e) => {
     if (e.target === e.currentTarget) onClose();
   };
