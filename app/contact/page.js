@@ -7,6 +7,7 @@ export default function Projects() {
   return (
     <FullWidthLayout
       showHero={true}
+      showPersistentSidebar={false}
       heroProps={{
         title: "Get In Touch",
         subtitle:
