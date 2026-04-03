@@ -181,7 +181,7 @@ body .chip-bg svg {
 /* ========================================================= */
 
 .container {
-  max-width: 1200px;
+  max-width: 10200px;
   margin: 0 auto;
   padding: 0 20px;
 }
@@ -280,5 +280,24 @@ body .chip-bg svg {
   }
   to {
     transform: translateY(5px);
+  }
+}
+
+/* responsive SVG variants */
+#chip-bg .mobile-only {
+  display: none;
+}
+
+#chip-bg .desktop-only {
+  display: inline;
+}
+
+@media (max-width: 768px) {
+  #chip-bg .mobile-only {
+    display: inline;
+  }
+
+  #chip-bg .desktop-only {
+    display: none;
   }
 }

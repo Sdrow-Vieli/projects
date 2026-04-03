@@ -7,17 +7,17 @@ import cardsData from "@/data/projects.json";
 
 export default function Projects() {
   return (
-    <FullWidthLayout showHero={false}>
+    <FullWidthLayout
+      showHero={true}
+      heroProps={{
+        title: "Web Applications",
+        subtitle:
+          "A collection of web-based projects focused on usability, structure, and practical functionality across different use cases",
+        showIntro: true,
+        showCommentedSocialBlock: false,
+      }}
+    >
       <div className="others">
-        <h1
-          className="lemon-font"
-          style={{
-            color: "#444444",
-            marginBottom: "1em",
-          }}
-        >
-          Web Applications
-        </h1>{" "}
         <NeatAltStackGrouped
           cards={cardsData.webApps}
           multipleMockupWidth={100}
@@ -25,15 +25,6 @@ export default function Projects() {
         />
       </div>{" "}
       <div className="desktop">
-        <h1
-          className="lemon-font"
-          style={{
-            color: "#444444",
-            marginBottom: "1em",
-          }}
-        >
-          Web Applications
-        </h1>{" "}
         <NeatAltStack
           cards={cardsData.webApps}
           multipleMockupWidth={100}

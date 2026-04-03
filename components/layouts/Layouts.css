@@ -9,7 +9,7 @@
 .full-width-layout {
   --persistent-side-modal-width: 35%;
   --persistent-side-modal-gap: 28px;
-  --persistent-side-modal-top: 24px;
+  --persistent-side-modal-top: 100px;
   --persistent-side-modal-bottom: 24px;
 }
 .desktop {
@@ -19,6 +19,7 @@
 .others {
   display: none;
 }
+
 .main {
   flex: 1;
   padding: 40px 0;
@@ -141,8 +142,8 @@
   align-items: flex-start;
   gap: 1rem;
   padding: 1.1rem 1.25rem 1rem;
-  border-bottom: 1px solid #eceff3;
-  background: linear-gradient(180deg, #ffffff 0%, #fcfcfc 100%);
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
   flex-shrink: 0;
 }
 

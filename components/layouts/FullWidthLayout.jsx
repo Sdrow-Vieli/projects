@@ -12,7 +12,12 @@ import "./Layouts.css";
 
 const PERSISTENT_MODAL_BREAKPOINT = 1200;
 
-export default function FullWidthLayout({ children, showHero = true }) {
+export default function FullWidthLayout({
+  children,
+  showHero = false,
+  heroProps = {},
+  showPersistentSidebar = true,
+}) {
   const [isWideScreen, setIsWideScreen] = useState(false);
   const [selectedPair, setSelectedPair] = useState(null);
 
@@ -50,21 +55,23 @@ export default function FullWidthLayout({ children, showHero = true }) {
     return previewCard?.title || "Project Preview";
   }, [selectedPair]);
 
+  const shouldShowPersistentSidebar = showPersistentSidebar && isWideScreen;
+
   return (
     <div className="full-width-layout">
       <ChipBackground />
       <Navbar />
-      {showHero && <Hero />}
+      {showHero && <Hero {...heroProps} />}
 
       <main className="main-full-width">
         <div
           className={`main-full-width-shell ${
-            isWideScreen ? "with-persistent-side-modal" : ""
+            shouldShowPersistentSidebar ? "with-persistent-side-modal" : ""
           }`}
         >
           <div className="main-full-width-content">{children}</div>
 
-          {isWideScreen && (
+          {shouldShowPersistentSidebar && (
             <div className="main-full-width-sidebar">
               <PersistentSideModal
                 title={persistentTitle}
@@ -78,11 +85,10 @@ export default function FullWidthLayout({ children, showHero = true }) {
                 ) : (
                   <div className="persistent-side-modal-empty-state">
                     <div>
-                      <h3>Select a project preview</h3>
+                      <h3>Select a project for preview</h3>
                       <p>
-                        On extra-large screens, project details stay visible
-                        here. Click any preview image to load its related
-                        content into this panel.
+                        Click any preview image to load its related content into
+                        this panel.
                       </p>
                     </div>
                   </div>

@@ -1,9 +1,10 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import technologyIcons from "@/data/lazy_appz.json";
-import ChipBackground from "./common/ChipBackground";
+
 const staggerContainer = {
   hidden: { opacity: 0 },
   visible: {
@@ -50,6 +51,8 @@ export default function SideModalNeatAltStack({
   multipleMockupWidth = 100,
   isMobile = false,
 }) {
+  const [descriptionExpanded, setDescriptionExpanded] = useState(false);
+
   if (!pair || pair.length < 2) return null;
 
   const [previewCard, detailsCard] = pair;
@@ -58,6 +61,15 @@ export default function SideModalNeatAltStack({
     technologyIcons.find((group) => group[detailsCard.iconKey])?.[
       detailsCard.iconKey
     ] || [];
+
+  const description = previewCard?.description || "";
+  const shouldClampDescription = isMobile
+    ? description.length > 140
+    : description.length > 180;
+
+  useEffect(() => {
+    setDescriptionExpanded(false);
+  }, [previewCard?.title]);
 
   return (
     <div
@@ -68,8 +80,6 @@ export default function SideModalNeatAltStack({
         textAlign: "center",
       }}
     >
-      {" "}
-      {/* Preview Card */}
       <motion.div
         initial={{ opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
@@ -137,9 +147,60 @@ export default function SideModalNeatAltStack({
             )}
 
             {previewCard.description && (
-              <p style={{ color: "#555", lineHeight: 1.7 }}>
-                {previewCard.description}
-              </p>
+              <div style={{ position: "relative" }}>
+                <p
+                  style={{
+                    color: "#555",
+                    lineHeight: 1.7,
+                    display: "-webkit-box",
+                    WebkitBoxOrient: "vertical",
+                    WebkitLineClamp: descriptionExpanded ? "unset" : 4,
+                    overflow: "hidden",
+                    marginBottom: "0.5rem",
+                    transition: "all 0.3s ease",
+                  }}
+                >
+                  {description}
+                </p>
+
+                {shouldClampDescription && (
+                  <button
+                    type="button"
+                    onClick={() => setDescriptionExpanded((prev) => !prev)}
+                    aria-label={
+                      descriptionExpanded
+                        ? "Collapse description"
+                        : "Expand description"
+                    }
+                    style={{
+                      background: "none",
+                      border: "none",
+                      color: "#007BFF",
+                      cursor: "pointer",
+                      padding: 0,
+                      fontSize: "0.9rem",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "0.25rem",
+                    }}
+                  >
+                    <span>
+                      {descriptionExpanded ? "Show less" : "Read more"}
+                    </span>
+                    <span
+                      style={{
+                        display: "inline-block",
+                        transform: descriptionExpanded
+                          ? "rotate(90deg)"
+                          : "rotate(0deg)",
+                        transition: "transform 0.3s ease",
+                      }}
+                    >
+                      ›
+                    </span>
+                  </button>
+                )}
+              </div>
             )}
 
             {previewCard.details && (
@@ -175,14 +236,13 @@ export default function SideModalNeatAltStack({
               style={{
                 width: "100%",
                 height: "auto",
-
                 objectFit: "cover",
               }}
             />
           </div>
         </div>
       </motion.div>
-      {/* Details Card */}
+
       <motion.div
         initial={{ opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
@@ -214,7 +274,6 @@ export default function SideModalNeatAltStack({
           </span>
         </div>
 
-        {/* Metrics */}
         {detailsCard.stats?.length > 0 && (
           <section
             style={{
@@ -276,7 +335,6 @@ export default function SideModalNeatAltStack({
           </section>
         )}
 
-        {/* Tech */}
         {techList.length > 0 && (
           <section
             style={{
@@ -331,7 +389,6 @@ export default function SideModalNeatAltStack({
           </section>
         )}
 
-        {/* Mockups */}
         {detailsCard.mockupImages?.length > 0 && (
           <section style={{ marginBottom: "2rem" }}>
             <h3
@@ -402,7 +459,6 @@ export default function SideModalNeatAltStack({
           </section>
         )}
 
-        {/* CTA */}
         {(detailsCard.link || detailsCard.button) && (
           <section style={{ textAlign: "center", marginTop: "1rem" }}>
             {detailsCard.link && (
@@ -416,7 +472,6 @@ export default function SideModalNeatAltStack({
                   justifyContent: "center",
                   padding: "0.9rem 1.4rem",
                   borderRadius: "999px",
-
                   color: "#fff",
                   textDecoration: "none",
                   fontWeight: 600,

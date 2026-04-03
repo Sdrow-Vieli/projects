@@ -34,10 +34,6 @@ export default function PersistentSideModal({
         </a>
 
         <div className="persistent-side-modal__header-right">
-          <div className="persistent-side-modal__title" title={title}>
-            {title}
-          </div>
-
           <button
             type="button"
             onClick={onClear}

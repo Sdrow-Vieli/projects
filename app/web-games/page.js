@@ -7,17 +7,17 @@ import cardsData from "@/data/projects.json";
 
 export default function Projects() {
   return (
-    <FullWidthLayout showHero={false}>
+    <FullWidthLayout
+      showHero={true}
+      heroProps={{
+        title: "Web Games",
+        subtitle:
+          "A range of interactive browser-based games exploring simple mechanics, engagement, and creative implementation",
+        showIntro: true,
+        showCommentedSocialBlock: false,
+      }}
+    >
       <div className="others">
-        <h1
-          className="lemon-font"
-          style={{
-            color: "#444444",
-            marginBottom: "1em",
-          }}
-        >
-          Web Games
-        </h1>{" "}
         <NeatAltStackGrouped
           cards={cardsData.webGames}
           multipleMockupWidth={100}
@@ -25,15 +25,6 @@ export default function Projects() {
         />
       </div>{" "}
       <div className="desktop">
-        <h1
-          className="lemon-font"
-          style={{
-            color: "#444444",
-            marginBottom: "1em",
-          }}
-        >
-          Web Games
-        </h1>{" "}
         <NeatAltStack
           cards={cardsData.webGames}
           multipleMockupWidth={100}
