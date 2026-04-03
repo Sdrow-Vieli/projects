@@ -282,3 +282,22 @@ body .chip-bg svg {
     transform: translateY(5px);
   }
 }
+
+/* responsive SVG variants */
+#chip-bg .mobile-only {
+  display: none;
+}
+
+#chip-bg .desktop-only {
+  display: inline;
+}
+
+@media (max-width: 768px) {
+  #chip-bg .mobile-only {
+    display: inline;
+  }
+
+  #chip-bg .desktop-only {
+    display: none;
+  }
+}

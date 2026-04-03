@@ -16,8 +16,11 @@ export default function ChipBackground() {
           <path className="trace" d="M240 0 V60 L300 120 H420" />
           <circle className="node" cx="420" cy="120" r="4" />
 
-          <path className="trace" d="M500 0 V80 L560 140 H680" />
-          <circle className="node" cx="680" cy="140" r="4" />
+          <path className="trace desktop-only" d="M500 0 V80 L560 140 H680" />
+          <circle className="node desktop-only" cx="680" cy="140" r="4" />
+
+          <path className="trace mobile-only" d="M500 0 V80 L560 190 H680" />
+          <circle className="node mobile-only" cx="680" cy="190" r="4" />
 
           <path className="trace" d="M760 0 V70 L820 130 H940" />
           <circle className="node" cx="940" cy="130" r="4" />
