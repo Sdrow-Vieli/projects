@@ -13,7 +13,7 @@ export default function Projects() {
       heroProps={{
         title: "Mobile Applications",
         subtitle:
-          "Explore our portfolio of projects across web, mobile, and gaming platforms",
+          "Mobile projects designed for Android and iOS, with an emphasis on clarity, performance, and ease of use",
         showIntro: true,
         showCommentedSocialBlock: false,
       }}

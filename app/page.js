@@ -12,7 +12,7 @@ export default function Home() {
       heroProps={{
         title: "Featured Projects",
         subtitle:
-          "Explore our portfolio of projects across web, mobile, and gaming platforms",
+          "A selection of projects across web, mobile, and gaming. This section highlights different types of work and approaches used in building digital solutions",
         showIntro: true,
         showCommentedSocialBlock: false,
       }}

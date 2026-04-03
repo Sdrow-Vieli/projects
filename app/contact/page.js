@@ -11,7 +11,7 @@ export default function Projects() {
       heroProps={{
         title: "Get In Touch",
         subtitle:
-          "Explore our portfolio of projects across web, mobile, and gaming platforms",
+          "For inquiries, collaborations, or more information, feel free to get in touch",
         showIntro: true,
         showCommentedSocialBlock: true,
       }}

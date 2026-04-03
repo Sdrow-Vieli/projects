@@ -61,14 +61,7 @@ const PreviewCard = ({
     setImageModalOpen(true);
   };
 
-  const toggleDescriptionExpanded = () => {
-    setDescriptionExpanded((prev) => !prev);
-  };
-
   const description = previewCard?.description || "";
-  const shouldClampDescription = isMobile
-    ? description.length > 140
-    : description.length > 180;
 
   return (
     <>
@@ -79,6 +72,7 @@ const PreviewCard = ({
         style={{
           top: `${stickyStartPosition}px`,
           boxShadow: "0 8px 15px rgba(0,0,0,0.6)",
+          marginTop: "2em",
         }}
       >
         <div className="project-number-container">
@@ -118,8 +112,7 @@ const PreviewCard = ({
                 >
                   {description}
                 </p>
-
-                            </div>
+              </div>
 
               <p>{previewCard?.details}</p>
 

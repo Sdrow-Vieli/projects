@@ -24,27 +24,16 @@ export default function Footer() {
         <div className="container">
           <div className="footer-grid">
             <div className="footer-section">
-              <div className="footer-brand">
-                <h4>Lindocode Digital</h4>
-              </div>
-
-              <p>
-                Creating beautiful, responsive web components with Next.js and
-                modern CSS.
-              </p>
-            </div>
-
-            <div className="footer-section">
               <h4>Quick Links</h4>
               <ul>
                 <li>
-                  <Link href="/">Home</Link>
+                  <a href="/">Home</a>
                 </li>
                 <li>
-                  <Link href="/about">About</Link>
+                  <Link href="/">Projects</Link>
                 </li>
                 <li>
-                  <Link href="/projects">Projects</Link>
+                  <Link href="/contact">Contact</Link>
                 </li>
               </ul>
             </div>
@@ -67,7 +56,7 @@ export default function Footer() {
             <div className="footer-section">
               <h4>Contact</h4>
               <p>Email: info@lindocode.com</p>
-              <p>GitHub: github.com/Lindocode</p>
+              <p></p>
             </div>
           </div>
 

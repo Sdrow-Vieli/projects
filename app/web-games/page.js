@@ -12,7 +12,7 @@ export default function Projects() {
       heroProps={{
         title: "Web Games",
         subtitle:
-          "Explore our portfolio of projects across web, mobile, and gaming platforms",
+          "A range of interactive browser-based games exploring simple mechanics, engagement, and creative implementation",
         showIntro: true,
         showCommentedSocialBlock: false,
       }}
