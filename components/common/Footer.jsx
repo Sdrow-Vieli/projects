@@ -17,7 +17,7 @@ export default function Footer() {
         <h1 className="lemon-font" style={{ color: "#444444" }}>
           Send Email
         </h1>
-        <EmailForm />
+        <EmailForm formspreeEndpoint="https://mail.api.lindocode.com/contact" />
       </div>
       <br />
       <footer className="footer">

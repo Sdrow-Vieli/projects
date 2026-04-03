@@ -180,14 +180,14 @@ export default function Navbar() {
                   <span className="menu-dot" />
                   Mobile Apps
                 </Link>
-                <a
-                  href="#contact-form"
-                  className={`menu-item-link ${isActive(`${pathname}#contact`) ? "active" : ""}`}
+                <Link
+                  href="/contact"
+                  className={`menu-item-link ${isActive("/contact") ? "active" : ""}`}
                   onClick={closeMenu}
                 >
                   <span className="menu-dot" />
                   Contact
-                </a>
+                </Link>
               </div>
 
               <div className="connect-panel">
@@ -231,7 +231,7 @@ export default function Navbar() {
                 </div>
 
                 <a
-                  href="#contact"
+                  href="#contact-form"
                   className="contact-button"
                   onClick={closeMenu}
                 >

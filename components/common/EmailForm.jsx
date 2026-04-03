@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const EmailForm = ({ formspreeEndpoint }) => {
+const EmailForm = ({ endpoint = "https://mail.api.lindocode.com/contact" }) => {
   const [isMobile, setIsMobile] = useState(false);
   const [status, setStatus] = useState("idle");
   const [errors, setErrors] = useState({});
@@ -9,6 +9,7 @@ const EmailForm = ({ formspreeEndpoint }) => {
     lastName: "",
     email: "",
     message: "",
+    company: "", // honeypot field for bot protection
   });
 
   useEffect(() => {
@@ -51,16 +52,24 @@ const EmailForm = ({ formspreeEndpoint }) => {
     setStatus("submitting");
 
     try {
-      const response = await fetch(formspreeEndpoint, {
+      const response = await fetch(endpoint, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          email: formData.email,
+          message: formData.message,
+          company: formData.company,
+        }),
       });
 
-      if (!response.ok) {
-        throw new Error("Submission failed");
+      const data = await response.json().catch(() => null);
+
+      if (!response.ok || !data?.success) {
+        throw new Error(data?.error || "Submission failed");
       }
 
       setStatus("success");
@@ -69,6 +78,7 @@ const EmailForm = ({ formspreeEndpoint }) => {
         lastName: "",
         email: "",
         message: "",
+        company: "",
       });
 
       setTimeout(() => setStatus("idle"), 3000);
@@ -158,6 +168,17 @@ const EmailForm = ({ formspreeEndpoint }) => {
           boxShadow: "0 8px 32px rgba(0, 0, 0, 0.1)",
         }}
       >
+        <input
+          type="text"
+          name="company"
+          value={formData.company}
+          onChange={handleChange}
+          autoComplete="off"
+          tabIndex={-1}
+          style={{ display: "none" }}
+          aria-hidden="true"
+        />
+
         <div style={{ marginBottom: "1.5rem" }}>
           <label
             htmlFor="firstName"
