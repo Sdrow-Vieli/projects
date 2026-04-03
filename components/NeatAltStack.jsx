@@ -258,7 +258,7 @@ const StackPair = ({
         {/* Dynamic Project Number Header */}
         <div className="project-number-container">
           <h2
-            className="press-start-font project-number"
+            className="press-start-font project-number "
             style={{
               color: projectStyle.color,
               margin: "1em",
