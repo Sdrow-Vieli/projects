@@ -14,19 +14,10 @@ export default function Projects() {
         subtitle:
           "Explore our portfolio of projects across web, mobile, and gaming platforms",
         showIntro: true,
-        showCommentedSocialBlock: true,
+        showCommentedSocialBlock: false,
       }}
     >
       <div className="others">
-        <h1
-          className="lemon-font"
-          style={{
-            color: "#444444",
-            marginBottom: "1em",
-          }}
-        >
-          Web Applications
-        </h1>{" "}
         <NeatAltStackGrouped
           cards={cardsData.webApps}
           multipleMockupWidth={100}
@@ -34,15 +25,6 @@ export default function Projects() {
         />
       </div>{" "}
       <div className="desktop">
-        <h1
-          className="lemon-font"
-          style={{
-            color: "#444444",
-            marginBottom: "1em",
-          }}
-        >
-          Web Applications
-        </h1>{" "}
         <NeatAltStack
           cards={cardsData.webApps}
           multipleMockupWidth={100}

@@ -14,7 +14,7 @@ export default function Home() {
         subtitle:
           "Explore our portfolio of projects across web, mobile, and gaming platforms",
         showIntro: true,
-        showCommentedSocialBlock: true,
+        showCommentedSocialBlock: false,
       }}
     >
       {" "}
@@ -49,7 +49,23 @@ export default function Home() {
           multipleMockupWidth={100}
           stickyStartPosition={100}
         />
-      </div>
+      </div>{" "}
+      <div>
+        <h1
+          className="lemon-font"
+          style={{
+            color: "#444444",
+            marginBottom: "1em",
+          }}
+        >
+          Mobile Applications
+        </h1>{" "}
+        <NeatAltStackGrouped
+          cards={cardsData.mobileApps}
+          multipleMockupWidth={100}
+          stickyStartPosition={100}
+        />
+      </div>{" "}
     </FullWidthLayout>
   );
 }

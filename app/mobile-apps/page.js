@@ -8,17 +8,18 @@ import cardsData from "@/data/projects.json";
 
 export default function Projects() {
   return (
-    <FullWidthLayout showHero={false}>
+    <FullWidthLayout
+      showHero={true}
+      heroProps={{
+        title: "Mobile Applications",
+        subtitle:
+          "Explore our portfolio of projects across web, mobile, and gaming platforms",
+        showIntro: true,
+        showCommentedSocialBlock: false,
+      }}
+    >
+      {" "}
       <div className="others">
-        <h1
-          className="lemon-font"
-          style={{
-            color: "#444444",
-            marginBottom: "1em",
-          }}
-        >
-          Mobile Applications
-        </h1>{" "}
         <NeatAltStackGrouped
           cards={cardsData.mobileApps}
           multipleMockupWidth={100}
@@ -26,15 +27,6 @@ export default function Projects() {
         />
       </div>{" "}
       <div className="desktop">
-        <h1
-          className="lemon-font"
-          style={{
-            color: "#444444",
-            marginBottom: "1em",
-          }}
-        >
-          Moile Applications
-        </h1>{" "}
         <NeatAltStack
           cards={cardsData.mobileApps}
           multipleMockupWidth={100}
