@@ -7,7 +7,16 @@ import NeatAltStackGrouped from "@/components/NeatStack";
 
 export default function Home() {
   return (
-    <FullWidthLayout showHero={true}>
+    <FullWidthLayout
+      showHero={true}
+      heroProps={{
+        title: "Featured Projects",
+        subtitle:
+          "Explore our portfolio of projects across web, mobile, and gaming platforms",
+        showIntro: true,
+        showCommentedSocialBlock: true,
+      }}
+    >
       {" "}
       <div>
         <h1

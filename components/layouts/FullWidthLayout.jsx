@@ -12,7 +12,11 @@ import "./Layouts.css";
 
 const PERSISTENT_MODAL_BREAKPOINT = 1200;
 
-export default function FullWidthLayout({ children, showHero = true }) {
+export default function FullWidthLayout({
+  children,
+  showHero = false,
+  heroProps = {},
+}) {
   const [isWideScreen, setIsWideScreen] = useState(false);
   const [selectedPair, setSelectedPair] = useState(null);
 
@@ -54,7 +58,7 @@ export default function FullWidthLayout({ children, showHero = true }) {
     <div className="full-width-layout">
       <ChipBackground />
       <Navbar />
-      {showHero && <Hero />}
+      {showHero && <Hero {...heroProps} />}
 
       <main className="main-full-width">
         <div

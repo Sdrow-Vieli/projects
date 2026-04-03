@@ -7,7 +7,16 @@ import cardsData from "@/data/projects.json";
 
 export default function Projects() {
   return (
-    <FullWidthLayout showHero={false}>
+    <FullWidthLayout
+      showHero={true}
+      heroProps={{
+        title: "Web Applications",
+        subtitle:
+          "Explore our portfolio of projects across web, mobile, and gaming platforms",
+        showIntro: true,
+        showCommentedSocialBlock: true,
+      }}
+    >
       <div className="others">
         <h1
           className="lemon-font"
