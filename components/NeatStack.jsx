@@ -29,6 +29,7 @@ const PreviewCard = ({
   const [isExtraLg, setIsExtraLg] = useState(false);
   const [selectedPair, setSelectedPair] = useState(null);
   const [imageModalOpen, setImageModalOpen] = useState(false);
+  const [descriptionExpanded, setDescriptionExpanded] = useState(false);
 
   const [previewCard] = pair;
   const projectNumber = String(globalIndex + 1).padStart(2, "0");
@@ -58,6 +59,15 @@ const PreviewCard = ({
     setSelectedPair(pair);
     setImageModalOpen(true);
   };
+
+  const toggleDescriptionExpanded = () => {
+    setDescriptionExpanded((prev) => !prev);
+  };
+
+  const description = previewCard?.description || "";
+  const shouldClampDescription = isMobile
+    ? description.length > 140
+    : description.length > 180;
 
   return (
     <>
@@ -92,7 +102,60 @@ const PreviewCard = ({
 
               <h2>{previewCard?.title}</h2>
               <h4 style={{ color: "#7B776E" }}>{previewCard?.subtitle}</h4>
-              <p>{previewCard?.description}</p>
+
+              <div style={{ position: "relative" }}>
+                <p
+                  style={{
+                    display: "-webkit-box",
+                    WebkitBoxOrient: "vertical",
+                    WebkitLineClamp: descriptionExpanded ? "unset" : 4,
+                    overflow: "hidden",
+                    lineHeight: "1.6",
+                    marginBottom: "0.5rem",
+                    transition: "all 0.3s ease",
+                  }}
+                >
+                  {description}
+                </p>
+
+                {shouldClampDescription && (
+                  <button
+                    onClick={toggleDescriptionExpanded}
+                    style={{
+                      background: "none",
+                      border: "none",
+                      color: "#007BFF",
+                      cursor: "pointer",
+                      padding: 0,
+                      fontSize: "0.9rem",
+                      display: "flex",
+                      alignItems: "center",
+                      gap: "0.25rem",
+                    }}
+                    aria-label={
+                      descriptionExpanded
+                        ? "Collapse description"
+                        : "Expand description"
+                    }
+                  >
+                    <span>
+                      {descriptionExpanded ? "Show less" : "Read more"}
+                    </span>
+                    <span
+                      style={{
+                        display: "inline-block",
+                        transform: descriptionExpanded
+                          ? "rotate(90deg)"
+                          : "rotate(0deg)",
+                        transition: "transform 0.3s ease",
+                      }}
+                    >
+                      ›
+                    </span>
+                  </button>
+                )}
+              </div>
+
               <p>{previewCard?.details}</p>
 
               {previewCard?.githubLink && (
